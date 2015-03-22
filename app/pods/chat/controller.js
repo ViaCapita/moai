@@ -6,12 +6,10 @@ export default Ember.Controller.extend({
 	actions: {
     createRoom: function(user){
       var newRoom = this.store.createRecord('message-room', {
-        name: "New Room",
+        name: user.get('fullName') + " Room",
       });
+
       newRoom.get('people').pushObject(user);
-      if(this.session.get('user')){
-        newRoom.get('people').pushObject(this.session.get('user'));
-      }
       newRoom.get('people').pushObject(this.session.get('user'));
       newRoom.save();
       this.set('currentRoom', newRoom.id);

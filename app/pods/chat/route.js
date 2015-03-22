@@ -7,7 +7,11 @@ export default Ember.Route.extend({
     });
   },
   setupController: function(controller, model){
-    controller.set('rooms', this.store.find('message-room'));
+    controller.set('rooms', this.store.find('message-room', {
+      orderBy: 'email'
+    }));
+    var sessionUser = this.session.get('user');
+    model = model.removeObject(sessionUser);
     controller.set('model', model);
   }
 });
