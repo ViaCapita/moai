@@ -1,0 +1,17 @@
+<ul class="chat" style="padding-top: 53px;">
+	{{#each messages as |message|}}
+        <li class="clearfix">
+        	<div class="chat-body clearfix">
+                <div class="header">
+                    <strong class="primary-font">{{message.sender.fullName}}</strong> 
+                    <small class="pull-right text-muted">
+                    	<span class="glyphicon glyphicon-time"></span>{{message.sentAt}}
+                    </small>
+                </div>
+                <p>{{message.body}}</p>
+        	</div>
+    	</li>
+	{{/each}}
+</ul>
+<textarea class="form-control" rows="3"{{newMessageBody}}></textarea>
+<button type="button" class="btn btn-primary btn-block" {{action "sendNewMessage"}}>SEND MESSAGE</button>

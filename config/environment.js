@@ -3,6 +3,9 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'pairs',
+    podModulePrefix: 'pairs/pods',
+    firebase_instance: 'pairsapp',
+    filepickerAPIKey: 'Aak0jm0AZRJufIXzDqgjoz',    
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -16,6 +19,16 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' http://api.filepicker.io/v1/filepicker.js",
+      'font-src': "'self' https://fonts.gstatic.com",
+      'connect-src': "'self' wss://*.firebaseio.com/ https://auth.firebase.com/",
+      'img-src': "'self' https://*.filepicker.io",
+      'report-uri':"'localhost'",
+      'style-src': "'self' 'unsafe-inline'",
+      'frame-src': "https://*.filepicker.io https://*.filepicker.io"
     }
   };
 

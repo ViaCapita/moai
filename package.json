@@ -1,6 +1,6 @@
 {
   "name": "pairs",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Small description for pairs goes here",
   "private": true,
   "directories": {
@@ -20,19 +20,25 @@
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.0",
-    "ember-cli": "0.2.0-beta.1",
+    "broccoli-autoprefixer": "^2.1.0",
+    "broccoli-sass": "^0.4.0",
+    "ember-cli": "0.2.0",
+    "ember-cli-app-version": "0.3.2",
     "ember-cli-babel": "^4.0.0",
-    "ember-cli-app-version": "0.3.1",
     "ember-cli-content-security-policy": "0.3.0",
-    "ember-cli-dependency-checker": "0.0.7",
+    "ember-cli-dependency-checker": "0.0.8",
     "ember-cli-htmlbars": "0.7.4",
     "ember-cli-ic-ajax": "0.1.1",
     "ember-cli-inject-live-reload": "^1.3.0",
-    "ember-cli-qunit": "0.3.8",
+    "ember-cli-qunit": "0.3.9",
     "ember-cli-uglify": "1.0.1",
     "ember-data": "1.0.0-beta.15",
     "ember-export-application-global": "^1.0.2",
+    "ember-moment": "1.1.1",
+    "ember-paper": "git+https://github.com/miguelcobain/ember-paper.git",
+    "emberfire": "git+https://github.com/firebase/emberfire.git",
     "express": "^4.8.5",
-    "glob": "^4.0.5"
+    "glob": "^4.0.5",
+    "liquid-fire": "git+https://github.com/ef4/liquid-fire.git"
   }
 }

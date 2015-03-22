@@ -1,0 +1,28 @@
+{{#paper-toolbar classNames="md-warn"}}
+  <div class="md-toolbar-tools">
+    Conversation with {{#each model as |person|}}{{person.email}}, {{/each}}
+  </div>
+{{/paper-toolbar}}
+{{#paper-content classNames="md-whiteframe-z1 list-demo"}}
+  {{#paper-list}}
+    {{#each model.messages as |message|}}sss
+      {{#paper-item}}
+        {{#paper-tile-left}}
+          <img {{bind-attr src=message.sender.face alt=message.sender.fullName}} class="face">
+        {{/paper-tile-left}}
+
+        {{#paper-tile-content}}
+          <h3>{{message.messageBody}}</h3>
+          <p>
+            {{message.sentAt}}
+          </p>
+        {{/paper-tile-content}}
+      {{/paper-item}}
+      {{paper-divider}} 
+    {{/each}}
+  {{/paper-list}}
+{{/paper-content}}
+{{paper-text label="Message" value=newMessageBody}}
+{{#paper-button raised=true action="sendMessage" classNames="md-primary"}}
+  Send Message
+{{/paper-button}}

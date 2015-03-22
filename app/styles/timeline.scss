@@ -1,0 +1,158 @@
+
+.cbp_tmtimeline {
+    margin: 30px 0 0 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+}
+.cbp_tmtimeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    background: #c5cae9;
+    left: 20%;
+    margin-left: -10px;
+}
+.cbp_tmtimeline>li {
+    position: relative;
+}
+.cbp_tmtimeline>li .cbp_tmtime {
+    display: block;
+    width: 25%;
+    padding-right: 100px;
+    position: absolute;
+}
+.cbp_tmtimeline>li .cbp_tmtime span {
+    display: block;
+    text-align: right;
+}
+.cbp_tmtimeline>li .cbp_tmtime span:first-child {
+    font-size: 0.9em;
+    color: #777777;
+}
+.cbp_tmtimeline>li .cbp_tmtime span:last-child {
+    font-size: 2.9em;
+    color: #3f51b5;
+}
+.cbp_tmtimeline>li:nth-child(odd) .cbp_tmtime span:last-child {
+    color: #303f9f;
+}
+.cbp_tmtimeline>li .cbp_tmlabel {
+    margin: 0 0 15px 25%;
+    background: #3f51b5;
+    color: #fff;
+    padding: 12px;
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 1.4;
+    position: relative;
+    border-radius: 5px;
+}
+.cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel {
+    background: #303f9f;
+}
+.cbp_tmtimeline>li .cbp_tmlabel h2 {
+    margin-top: 0px;
+    border-bottom: 1px solid rgba(255,  255,  255,  0.4);
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    line-height: 26px;
+}
+.cbp_tmtimeline>li .cbp_tmlabel p {
+    font-size: 16px;
+    line-height: 16px;
+    margin: 10px 0;
+}
+.cbp_tmtimeline>li .cbp_tmlabel p.light-text {
+    font-size: 15px;
+    font-weight: 200;
+    line-height: 20px;
+}
+.cbp_tmtimeline>li .cbp_tmlabel:after {
+    right: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-right-color: #3f51b5;
+    border-width: 10px;
+    top: 10px;
+}
+.cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {
+    border-right-color: #303f9f;
+}
+.cbp_tmtimeline>li .cbp_tmicon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4em;
+    line-height: 40px;
+    -webkit-font-smoothing: antialiased;
+    position: absolute;
+    color: #fff;
+    background: #3f51b5;
+    border-radius: 50%;
+    box-shadow: 0 0 0 8px #c5cae9;
+    text-align: center;
+    left: 20%;
+    top: 0;
+    margin: 0 0 0 -25px;
+}
+.cbp_tmicon-phone:before {
+    content: "\e000"}
+.cbp_tmicon-screen:before {
+    content: "\e001"}
+.cbp_tmicon-mail:before {
+    content: "\e002"}
+.cbp_tmicon-earth:before {
+    content: "\e003"}
+.move-container .cbp_tmtime {
+    top: 20% !important;
+}
+.move-container .cbp_tmicon, .move-container .cbp_tmlabel {
+    top: 24% !important;
+}
+.move-container .cbp_tmlabel {
+    width: 50%}
+// @media screen and (max-width: 65.375em) {
+//     .cbp_tmtimeline>li .cbp_tmtime span: last-child {
+//     font-size: 1.5em;
+// }
+// }@media screen and (max-width: 47.2em) {
+//     .cbp_tmtimeline: before {
+//     display: none;
+// }
+.cbp_tmtimeline>li .cbp_tmtime {
+    width: 100%;
+    position: relative;
+    padding: 0 0 20px 0;
+}
+.cbp_tmtimeline>li .cbp_tmtime span {
+    text-align: left;
+}
+.cbp_tmtimeline>li .cbp_tmlabel {
+    margin: 0 0 30px 0;
+    padding: 1em;
+    font-weight: 400;
+    font-size: 95%}
+.cbp_tmtimeline>li .cbp_tmlabel:after {
+    right: auto;
+    left: 20px;
+    border-right-color: transparent;
+    border-bottom-color: #3f51b5;
+    top: -20px;
+}
+.cbp_tmtimeline>li:nth-child(odd) .cbp_tmlabel:after {
+    border-right-color: transparent;
+    border-bottom-color: #212121;
+}
+.cbp_tmtimeline>li .cbp_tmicon {
+    position: relative;
+    float: right;
+    left: auto;
+    margin: -55px 5px 0 0px;
+}

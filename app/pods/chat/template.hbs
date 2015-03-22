@@ -1,0 +1,49 @@
+{{#paper-nav-container classNames="pairs-app"}}
+  {{#paper-sidenav classNames="md-sidenav-left md-whiteframe-z2" flex-layout="column" flex=true}}
+    {{#paper-toolbar}}
+      <div class="md-toolbar-tools">
+        <div class="pairs-logo">
+          <img src="pairs-logo.png" />
+        </div>
+      </div>
+    {{/paper-toolbar}}
+    {{#paper-content}}
+      <nav class="sidenav">
+        <ul>
+          {{#each rooms as |room|}}
+            {{#link-to 'chat.room' room tagName="li"}}
+              {{#link-to "chat.room" room}}{{room.name}}{{/link-to}}
+            {{/link-to}} 
+          {{/each}}
+          {{#each model as |person|}}
+            <li>
+              <a {{action 'createRoom' person}}>
+                {{person.email}} 
+              </a>
+            </li>
+          {{/each}}
+        </ul>
+      </nav>
+    {{/paper-content}}
+  {{/paper-sidenav}}
+  {{#paper-content flex-layout="column" flex=true}}
+    {{#paper-toolbar}}
+      <div class="md-toolbar-tools pairs-nav-buttons">
+        {{#paper-sidenav-toggle}}
+          <div class="pairs-icon">
+            <img src="pairs-icon.png" />
+          </div>         
+        {{/paper-sidenav-toggle}}
+        {{#link-to "chat" classNames="md-button md-default-theme" tagName="button"}}
+          Chat Home
+        {{/link-to}}
+        {{#link-to "account.settings" classNames="md-button md-default-theme" tagName="button"}}
+          Settings
+        {{/link-to}}
+      </div>
+    {{/paper-toolbar}}  
+    {{#paper-content flex-layout="column" flex=true}}
+      {{outlet}}
+    {{/paper-content}}
+  {{/paper-content}}
+{{/paper-nav-container}}
