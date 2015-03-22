@@ -1,7 +1,7 @@
 
 {{paper-text label="E-mail" type="email" value=model.email}}
-{{#if emailValidated}}{{paper-icon icon="check-circle" size=5}}{{/if}}
-{{paper-text label="Password" type="password" value=model.password}}{{#if passwordValidated}}{{paper-icon icon="check-circle" size=5}}{{/if}}
+{{#if emailValidated}}{{paper-icon icon="check-circle" size=1}}{{/if}}
+{{paper-text label="Password" type="password" value=model.password}}{{#if passwordValidated}}{{paper-icon icon="check-circle" size=1}}{{/if}}
 
  {{#paper-button raised=true action="authenticate" classNames="md-primary"}}Primary{{/paper-button}}
 

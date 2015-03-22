@@ -47,7 +47,6 @@ export default Ember.Controller.extend({
 							    	that.set('passwordError', error);
 							  	} else {
 							    	console.log("Authenticated successfully with payload:", authData);
-						      	debugger
 						      	var user = that.get("store").createRecord('user', {
 						      		id: authData.uid,
 						      		email: reg.get('email'),
@@ -65,7 +64,7 @@ export default Ember.Controller.extend({
 										us.set('email', authData.email);
 										us.set('resetPassword', authData.isTemporaryPassword);
 										us.save();
-
+                		that.session.set('user', user);
 							    	that.transitionToRoute("chat");
 							    }
 							});

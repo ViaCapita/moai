@@ -20,13 +20,13 @@
     {{#each model.messages as |message|}}
       {{#paper-item}}
         {{#paper-tile-left}}
-          <img {{bind-attr src=message.sender.face alt=message.sender.fullName}} class="face">
+          <img src={{message.sender.face}} alt={{message.sender.fullName}} class="face">
         {{/paper-tile-left}}
 
         {{#paper-tile-content}}
-          <h3>{{message.body}}</h3>
+          <h3>{{message.sender.first}}: {{message.body}}</h3>
           <p>
-            {{message.sentAt}}
+            {{ago message.sentAt}}
           </p>
         {{/paper-tile-content}}
       {{/paper-item}}
