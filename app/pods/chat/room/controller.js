@@ -5,15 +5,14 @@ export default Ember.Controller.extend({
   currentRoom: null,
 	actions: {
 		sendMessage: function () {
-      debugger
+      var room = this.get('model');
   		var message = this.store.createRecord('message');
-  		message.messageBody = this.get('newMessageBody');
-  		message.messageRoom = this.get('model.id');
-  		message.sender = this.session.get('user');
-  		message.sentAt = Date.now();
+  		message.set('body', this.get('newMessageBody'));
+  		message.set('room', room);
+  		message.set('sender', this.session.get('user'));
       message.save();
-      this.get('model').get('messages').pushObject(message);
-      // this.set('newMessageBody', "");
+      room.get('messages').pushObject(message);
+      this.set('newMessageBody', '');
 		}
 	}
 });

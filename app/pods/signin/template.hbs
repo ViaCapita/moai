@@ -1,5 +1,6 @@
 
 {{paper-text label="E-mail" type="email" value=model.email}}
-{{paper-text label="Password" type="password" value=model.password}}
+{{#if emailValidated}}{{paper-icon icon="check-circle" size=5}}{{/if}}
+{{paper-text label="Password" type="password" value=model.password}}{{#if passwordValidated}}{{paper-icon icon="check-circle" size=5}}{{/if}}
 
  {{#paper-button raised=true action="authenticate" classNames="md-primary"}}Primary{{/paper-button}}

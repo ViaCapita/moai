@@ -28,62 +28,53 @@ export default Ember.Controller.extend({
 	
   	actions: {
     	register: function(){
-	      	var reg = this.get("model");
-			var fb = new window.Firebase('https://amber-fire-9286.firebaseio.com');
-			var that = this;
-			var emailPassword = {
-			  	email    : reg.get('email'),
-			  	password : reg.get('password')
-			};
+	      var reg = this.get("model");
+				var fb = new window.Firebase('https://amber-fire-9286.firebaseio.com');
+				var that = this;
+				var emailPassword = {
+				  	email    : reg.get('email'),
+				  	password : reg.get('password')
+				};
  
-			Ember.run(function(){
-				fb.createUser(emailPassword, function(error) {
-				  if (error === null) {
-				    console.log("User created successfully");
-					Ember.run.schedule('actions', this, function(){
-						fb.authWithPassword(emailPassword, function(error, authData) {
-						  	if (error) {
-						    	console.log("Login Failed!", error);
-						    	that.set('passwordError', error);
-						  	} else {
-						    	console.log("Authenticated successfully with payload:", authData);
-						    	var us = that.get('store').createRecord('user-session');
-						    	us.set('uid', authData.uid);
-								us.set('provider', authData.provider);
-								us.set('auth', authData.auth);
-								us.set('expires', authData.expires);
-								us.set('email', authData.email);
-								us.set('resetPassword', authData.isTemporaryPassword);
-								us.save();
-
-						      	var username = reg.get('firstName').toLowerCase() + "-" + reg.get('lastName').toLowerCase();;
-						      	// TODO: Need to confirm username unique
-						      	var person = that.get("store").createRecord('person', {
-						      		id: username,
-						      		createdAt: new Date(),
-						      		firstName: reg.firstName,
-						      		lastName: reg.lastName,
-						      	}).save();
-
+				Ember.run(function(){
+					fb.createUser(emailPassword, function(error) {
+					  if (error === null) {
+					    console.log("User created successfully");
+							Ember.run.schedule('actions', this, function(){
+								fb.authWithPassword(emailPassword, function(error, authData) {
+							  	if (error) {
+							    	console.log("Login Failed!", error);
+							    	that.set('passwordError', error);
+							  	} else {
+							    	console.log("Authenticated successfully with payload:", authData);
+						      	debugger
 						      	var user = that.get("store").createRecord('user', {
-						      		email: reg.email,
-						      		uid: authData.uid,
-						      		person: person,
+						      		id: authData.uid,
+						      		email: reg.get('email'),
+						      		createdAt: new Date(),
+							      	first: reg.get('first'),
+						      		last: reg.get('last'),
 						      	}).save(); 
 
-						      	reg.set('person', person);
-						      	reg.set('user', user);
-						      	reg.save();
+							    	var us = that.get('store').createRecord('session');
+							    	us.set('user', user);
+							    	us.set('uid', authData.uid);
+										us.set('provider', authData.provider);
+										us.set('auth', authData.auth);
+										us.set('expires', authData.expires);
+										us.set('email', authData.email);
+										us.set('resetPassword', authData.isTemporaryPassword);
+										us.save();
 
-						    	that.transitionToRoute("profile", username);
-						    }
-						});
-					});	
-				  } else {
-				    console.log("Error creating user:", error);
-				  }
-				});			
-			});
+							    	that.transitionToRoute("chat");
+							    }
+							});
+						});	
+					  } else {
+					    console.log("Error creating user:", error);
+					  }
+					});			
+				});
 
     	}  
   	}

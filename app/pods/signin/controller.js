@@ -46,7 +46,9 @@ export default Ember.Controller.extend({
 					    	that.set('passwordError', error);
 					  	} else {
 					    	console.log("Authenticated successfully with payload:", authData);
+                var user = that.get("store").find('user', authData.uid); 
 					    	var us = that.get('store').createRecord('session');
+                us.set('user', user);
 					    	us.set('uid', authData.uid);
 								us.set('provider', authData.provider);
 								us.set('auth', authData.auth);
@@ -54,8 +56,6 @@ export default Ember.Controller.extend({
 								us.set('email', authData.email);
 								us.set('resetPassword', authData.isTemporaryPassword);
 								us.save();
-								signin.set('session', us);
-								signin.save();
 						   	that.transitionToRoute("chat");
 						  }
 						});

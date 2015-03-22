@@ -11,14 +11,14 @@
       <nav class="sidenav">
         <ul>
           {{#each rooms as |room|}}
-            {{#link-to 'chat.room' room tagName="li"}}
-              {{#link-to "chat.room" room}}{{room.name}}{{/link-to}}
+            {{#link-to 'chat.room' room.id tagName="li"}}
+              {{#link-to "chat.room" room.id}}{{room.name}}{{/link-to}}
             {{/link-to}} 
           {{/each}}
           {{#each model as |person|}}
             <li>
               <a {{action 'createRoom' person}}>
-                {{person.email}} 
+                {{person.fullName}} 
               </a>
             </li>
           {{/each}}
@@ -27,7 +27,7 @@
     {{/paper-content}}
   {{/paper-sidenav}}
   {{#paper-content flex-layout="column" flex=true}}
-    {{#paper-toolbar}}
+{{!--     {{#paper-toolbar}}
       <div class="md-toolbar-tools pairs-nav-buttons">
         {{#paper-sidenav-toggle}}
           <div class="pairs-icon">
@@ -41,7 +41,7 @@
           Settings
         {{/link-to}}
       </div>
-    {{/paper-toolbar}}  
+    {{/paper-toolbar}}   --}}
     {{#paper-content flex-layout="column" flex=true}}
       {{outlet}}
     {{/paper-content}}
