@@ -7,5 +7,8 @@ export default DS.Model.extend({
   room:         DS.belongsTo('message-room', { async: true, inverse: 'messages'  }),  
   fullName: function(){
     return this.get('first') + " " + this.get('last');
-  }.property('first', 'last')
+  }.property('first', 'last'),  
+  face: function(){
+    return "/img/tomster.png";
+  }.property()
 });

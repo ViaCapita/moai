@@ -1,8 +1,8 @@
-{{paper-text label="E-mail" type="email" value=model.email}}{{#if emailValidated}}{{paper-icon icon="check-circle" size=5}}{{/if}}
-{{paper-text label="First Name" value=model.first}}{{#if model.first}}{{paper-icon icon="check-circle" size=5}}{{/if}}
-{{paper-text label="Last Name" value=model.last}}{{#if model.last}}{{paper-icon icon="check-circle" size=5}}{{/if}}
-{{paper-text label="Password" type="password" value=model.password}}{{#if passwordValidated}}{{paper-icon icon="check-circle" size=5}}{{/if}}
-{{paper-text label="Confirm Password" type="password" value=model.confirmation}}{{#if passwordConfirmed}}{{paper-icon icon="check-circle" size=5}}{{/if}}
+{{paper-text label="E-mail" type="email" value=model.email}}{{#if emailValidated}}{{paper-icon icon="check-circle" size=2}}{{/if}}
+{{paper-text label="First Name" value=model.first}}{{#if model.first}}{{paper-icon icon="check-circle" size=2}}{{/if}}
+{{paper-text label="Last Name" value=model.last}}{{#if model.last}}{{paper-icon icon="check-circle" size=2}}{{/if}}
+{{paper-text label="Password" type="password" value=model.password}}{{#if passwordValidated}}{{paper-icon icon="check-circle" size=2}}{{/if}}
+{{paper-text label="Confirm Password" type="password" value=model.confirmation}}{{#if passwordConfirmed}}{{paper-icon icon="check-circle" size=2}}{{/if}}
 {{#paper-button raised=true action="register" classNames="md-primary"}}Primary{{/paper-button}}
 
  {{#link-to 'signin'}}Sign in to your account{{/link-to}}

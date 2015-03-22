@@ -65,7 +65,7 @@ export default Ember.Controller.extend({
 										us.set('email', authData.email);
 										us.set('resetPassword', authData.isTemporaryPassword);
 										us.save();
-
+                		that.session.set('user', user);
 							    	that.transitionToRoute("chat");
 							    }
 							});
