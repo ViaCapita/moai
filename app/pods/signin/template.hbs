@@ -4,3 +4,5 @@
 {{paper-text label="Password" type="password" value=model.password}}{{#if passwordValidated}}{{paper-icon icon="check-circle" size=5}}{{/if}}
 
  {{#paper-button raised=true action="authenticate" classNames="md-primary"}}Primary{{/paper-button}}
+
+ {{#link-to 'register'}}Register for account{{/link-to}}
