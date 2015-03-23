@@ -20,7 +20,7 @@
     {{#each model.messages as |message|}}
       {{#paper-item}}
         {{#paper-tile-left}}
-          <img src={{message.sender.face}} alt={{message.sender.fullName}} class="face">
+          <span class="{{if message.mine 'me' 'them'}}">{{message.sender.initial}}</span>
         {{/paper-tile-left}}
 
         {{#paper-tile-content}}
@@ -33,8 +33,8 @@
       {{paper-divider}} 
     {{/each}}
   {{/paper-list}}
-{{/paper-content}}
-{{paper-text label="Message" value=newMessageBody}}
+{{/paper-content}}<br><br><br>
+{{textarea rows="4" placeholder="Message" value=newMessageBody insertNewline="sendMessage"}}<br><br><br>
 {{#paper-button raised=true action="sendMessage" classNames="md-primary"}}
   Send Message
-{{/paper-button}}
+{{/paper-button}}<br><br>

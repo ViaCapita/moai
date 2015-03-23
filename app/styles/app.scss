@@ -106,107 +106,48 @@ body {
 .doc-content {
   max-width: 864px;
   margin: auto; }
+  
+.list-demo .face {
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  width: 48px;
+  margin: 16px; }  
 
+.list-demo span.them {
+  border: 1px solid #ddd;
+  margin: 16px; 
+  background: #de4e43;
+  border-radius: 30px;
+  // border-radius: 0.8em;
+  // -moz-border-radius: 0.8em;
+  // -webkit-border-radius: 0.8em;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 48px;
+  margin-right: 5px;
+  text-align: center;
+  font-size: 24px;
+  // width: 1.6em; 
+  width: 48px; 
 
-core-scaffold::shadow core-toolbar {
-    background-color: #ce1126;
-    color: #fff;
-}
-core-icon[icon=account-circle] {
-    margin-right: 3px;
-}
-// paper-input {
-//     padding-right: 10px;
-// }
-// paper-input /deep/ .focused-underline {
-//     background-color: #ce1126;
-// }
-// paper-fab[icon=send] {
-//     background: #ce1126;
-//     bottom: 9px;
-// }
-#chat {
-    height: 100%;
-}
-.chat-list {
-    overflow-y: scroll;
-    padding-bottom: 16px;
-}
-.send-message {
-    padding: 0 16px 6px 16px;
-}
-.shim {
-    position: fixed;
-    bottom: 54px;
-    left: 0;
-    right: 0;
-    height: 36px;
-    background: linear-gradient(rgba(255,255,255,0), #eee 80%) top center no-repeat;
-}
-.occupancy {
-    padding: 16px;
-}
-.subdue, .subdue div {
-    color: #999;
 }
 
-/* Drawer */
-
-#onlineList {
-    margin: 16px;
-    text-transform: capitalize;
-}
-
-::content > .avatar {
-    margin: 0; /* override */
-}
-#navheader {
-    background: url(../images/abstract-21664.jpg) top left no-repeat;
-}
-#navheader .avatar {
-    border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    background: #9e9e9e url() center center no-repeat;
-    background-size: contain;
-}
-#navheader .uuid {
-    color: #fff;
-    font-weight: 500;
-    text-shadow: 1px 1px 2px #000;
-}
-
-/* Avatar */
-.avatar {
-    border: solid 3px silver;
-}
-.avatar.navy {
-    border-color: #393b79;
-}
-.avatar.slate {
-    border-color: #6b6ecf;
-}
-.avatar.olive {
-    border-color: #637939;
-}
-.avatar.moss {
-    border-color: #b5cf6b;
-}
-.avatar.chocolate {
-    border-color: #8c6d31;
-}
-.avatar.buttercup {
-    border-color: #e7ba52;
-}
-.avatar.maroon {
-    border-color: #843c39;
-}
-.avatar.cerise {
-    border-color: #d6616b;
-}
-.avatar.plum {
-    border-color: #7b4173;
-}
-.avatar.orchid {
-    border-color: #ce6dbd;
+.list-demo span.me {
+  border: 1px solid #ddd;
+  margin: 16px; 
+  background: #2c97df;
+  border-radius: 30px;
+  // border-radius: 0.8em;
+  // -moz-border-radius: 0.8em;
+  // -webkit-border-radius: 0.8em;
+  color: #ffffff;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 48px;
+  margin-right: 5px;
+  text-align: center;
+  font-size: 24px;
+  // width: 1.6em; 
+  width: 48px; 
 }

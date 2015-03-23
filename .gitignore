@@ -13,5 +13,8 @@
 /connect.lock
 /coverage/*
 /libpeerconnection.log
+.DS_Store
+Thumbs.db
+/coverage/*
 npm-debug.log
 testem.log

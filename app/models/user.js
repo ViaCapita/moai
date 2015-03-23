@@ -10,5 +10,8 @@ export default DS.Model.extend({
   }.property('first', 'last'),  
   face: function(){
     return "/img/tomster.png";
+  }.property(),  
+  initial: function(){
+    return this.get('first').charAt(0);
   }.property()
 });
