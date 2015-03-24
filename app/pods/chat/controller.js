@@ -12,12 +12,6 @@ export default Ember.Controller.extend({
       newRoom.get('people').pushObject(user);
       newRoom.get('people').pushObject(sessionUser);
       newRoom.save();
-      //Below I am adding 2 rooms one which gets destroyed immediately???
-      user.get('messageRooms').pushObject(newRoom);
-      user.save();
-      //Below I am adding 2 rooms one which gets destroyed immediately???
-      sessionUser.get('messageRooms').pushObject(newRoom);
-      sessionUser.save();
       this.transitionToRoute('chat.room', newRoom);
     }
 	}
