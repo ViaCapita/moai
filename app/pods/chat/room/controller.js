@@ -11,7 +11,9 @@ export default Ember.Controller.extend({
   		message.set('room', room);
       message.set('sender', this.session.get('user.content'));
       message.set('sentAt', new Date());
-      message.save();
+      message.save().then(() => {
+        return room.save();
+      });
       this.set('newMessageBody', '');
 		}
 	}
