@@ -8,7 +8,7 @@ export default Ember.Component.extend({
   imageServices: ['COMPUTER', 'FACEBOOK', 'GMAIL', 'BOX', 'DROPBOX', 'FLICKR', 'PICASA', 'INSTAGRAM'],
   imageTypes: ['image/*'],
   store: null,
-
+  user: null,
   actions: {
     didInsertElement: function () {
       if (!this.get('store')) {
@@ -19,11 +19,15 @@ export default Ember.Component.extend({
     pickWithFilepicker: function () {
       var self = this;
       var serviceType = this.get('serviceType') || 'image';
-
+      var user = this.get('user');
       var newFile = this.get('store').createRecord('image', {
+        user: user,
         ready: false
       });
       newFile.save();
+
+      user.set('profileImage', newFile);
+      user.save();
 
       // Bubble 'save' action up to the Controller
       self.sendAction('save', newFile);
