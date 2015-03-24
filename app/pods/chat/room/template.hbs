@@ -3,7 +3,7 @@
     {{#paper-sidenav-toggle}}
       <div class="pairs-icon">
         <img src="pairs-icon.png" />
-      </div>         
+      </div>
     {{/paper-sidenav-toggle}}
     {{#if model.isPrivate}}
       Conversation with {{model.privateName}}
@@ -11,17 +11,17 @@
       {{model.name}}
     {{/if}}
   </div>
-{{/paper-toolbar}}  
+{{/paper-toolbar}}
 {{#paper-content classNames="md-whiteframe-z1 list-demo"}}
   {{#paper-list}}
     {{#each model.messages as |message|}}
       {{#paper-item}}
         {{#paper-tile-left}}
-          {{#if message.sender.thumbImage}}
-            <img src={{message.sender.thumbImage}} class="face">
+          {{#if message.sender.profileImage.url}}
+            <img src={{message.sender.profileImage.thumbUrl}} class="face">
           {{else}}
             <span class="{{if message.mine 'me' 'them'}}">{{message.sender.initial}}</span>
-          {{/if}}  
+          {{/if}}
         {{/paper-tile-left}}
         {{#paper-tile-content}}
           <h3>{{message.body}}</h3>
@@ -30,7 +30,7 @@
           </p>
         {{/paper-tile-content}}
       {{/paper-item}}
-      {{paper-divider}} 
+      {{paper-divider}}
     {{/each}}
   {{/paper-list}}
 {{/paper-content}}
