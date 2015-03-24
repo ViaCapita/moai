@@ -43,6 +43,25 @@ body {
   text-align: center;
   padding: 6em 2em;
 
+  .background-filter {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.4);
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  .form-content {
+    position: relative;
+    z-index: 1;
+    padding: 3em 3em;
+    display: inline-block;
+    background: rgba(0,0,0,0.2);
+    border-radius: 30px;
+  }
+
   .controls {
     margin-top: 1em;
 
@@ -67,8 +86,15 @@ body {
     text-align: left;
   }
 
-  md-input-group.md-default-theme input, md-input-group.md-default-theme textarea {
-    width: 100%;
+  md-input-group.md-default-theme {
+    input, textarea {
+      width: 100%;
+    }
+
+    label {
+      text-shadow: none;
+      color: rgba(0, 0, 0, 0.46);
+    }
   }
 
   .md-2x {
