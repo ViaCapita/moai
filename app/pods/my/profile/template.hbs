@@ -5,7 +5,7 @@
         {{#paper-sidenav-toggle}}
         <div class="pairs-logo">
           <img src="pairs-logo.png" />
-        </div>        
+        </div>
         {{/paper-sidenav-toggle}}
         {{#link-to "chat" classNames="md-button md-default-theme" tagName="button"}}
           Chat Home
@@ -14,12 +14,10 @@
           Settings
         {{/link-to}}
       </div>
-    {{/paper-toolbar}}  
-    {{#paper-content flex-layout="column" flex=true}}
+    {{/paper-toolbar}}
+    {{#paper-content flex-layout="column" flex=true class="form-content"}}
       {{paper-text label="First Name" value=model.first}}
       {{paper-text label="Last Name" value=model.last}}
-      <img src={{model.profileImage.thumbUrl}}  class="face"><br>
-      {{file-picker user=model serviceType="image" store=store save="save" error="error"}}
       {{#if errors.length}}
         <div class="errors">
           <h2>Errors</h2>
@@ -32,6 +30,10 @@
         </div>
       {{/if}}
       {{#paper-button raised=true action="updateUser" classNames="md-primary"}}Update User{{/paper-button}}
+      <p class='avatar'>
+        {{#if model.profileImage.thumbUrl}}<img src={{model.profileImage.thumbUrl}}  class="face">{{/if}}
+        {{file-picker user=model serviceType="image" store=store save="save" error="error" class="filepicker"}}
+      </p>
     {{/paper-content}}
   {{/paper-content}}
 {{/paper-nav-container}}

@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  url: DS.attr('string'),
+  url:      DS.attr('string'),
   filename: DS.attr('string'),
   size:     DS.attr('number'),
   width:    DS.attr('number'),
@@ -12,6 +12,12 @@ export default DS.Model.extend({
   }),
 
   thumbUrl: function(){
-    return this.get('url') + "/convert?width=50&height=50&fit=crop";
+    var u = this.get('url');
+
+    if(u) {
+      return u + "/convert?width=50&height=50&fit=crop";
+    } else {
+      return false;
+    }
   }.property('url')
 });

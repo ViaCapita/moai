@@ -21,13 +21,9 @@ export default Ember.Component.extend({
       var serviceType = this.get('serviceType') || 'image';
       var user = this.get('user');
       var newFile = this.get('store').createRecord('image', {
-        user: user,
         ready: false
       });
       newFile.save();
-
-      user.set('profileImage', newFile);
-      user.save();
 
       // Bubble 'save' action up to the Controller
       self.sendAction('save', newFile);
@@ -43,6 +39,9 @@ export default Ember.Component.extend({
           newFile.set('filename', blob.filename);
           newFile.set('size', Math.round((blob.size / 1024 + 0.00001) * 100) / 100);
           newFile.save();
+
+          user.set('profileImage', newFile);
+          user.save();
 
           // get image's width and height, then add to file
           filepicker.stat(blob,

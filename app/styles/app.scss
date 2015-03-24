@@ -91,32 +91,58 @@ body {
     position: relative;
     text-align: left;
   }
+}
 
-  md-input-group.md-default-theme {
-    input, textarea {
-      width: 100%;
+md-input-group.md-default-theme {
+  input, textarea {
+    width: 100%;
+  }
+
+  &:not(.md-input-focused) label {
+    text-shadow: none;
+    color: rgba(0, 0, 0, 0.46);
+  }
+}
+
+.md-2x {
+  position: absolute;
+  right: 11px;
+  top: 17px;
+}
+
+md-icon {
+  position: absolute;
+  top: 23px;
+  right: 6px;
+}
+
+.ic-check-circle:before {
+  color: #03a9f4;
+}
+
+md-nav-container {
+  .form-content {
+    width: 30em;
+    margin: 1em 3em;
+
+    p.avatar {
+      line-height: 2;
+      margin: -0.5em 0 2em;
+      margin-top: 10px;
     }
 
-    label {
-      text-shadow: none;
-      color: rgba(0, 0, 0, 0.46);
+    img.face {
+      margin-right: 1em;
+      position: relative;
+      top: 19px;
+      width: 50px;
+      height: 50px;
     }
-  }
 
-  .md-2x {
-    position: absolute;
-    right: 11px;
-    top: 17px;
-  }
-
-  md-icon {
-    position: absolute;
-    top: 23px;
-    right: 6px;
-  }
-
-  .ic-check-circle:before {
-    color: #03a9f4;
+    .filepicker {
+      display: inline-block;
+      position: relative;
+    }
   }
 }
 
