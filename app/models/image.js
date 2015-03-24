@@ -12,6 +12,6 @@ export default DS.Model.extend({
   }),
 
   thumbUrl: function(){
-    return this.get('url') + "/convert?width=50&height=50&fit=crop"
+    return this.get('url') + "/convert?width=50&height=50&fit=crop";
   }.property('url')
 });
