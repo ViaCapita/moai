@@ -6,6 +6,7 @@ export default Ember.Route.extend({
   },
   setupController: function(controller, model){
     model = this.get('session.user.content');
+    controller.set('errors', []);
     controller.set('model', model);
   }
 });
