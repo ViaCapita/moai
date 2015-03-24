@@ -29,7 +29,7 @@ export default Ember.Controller.extend({
   	actions: {
     	register: function(){
 	      var reg = this.get("model");
-				var fb = new window.Firebase('https://amber-fire-9286.firebaseio.com');
+				var fb = new window.Firebase('https://pairsapp.firebaseio.com');
 				var that = this;
 				var emailPassword = {
 				  	email    : reg.get('email'),

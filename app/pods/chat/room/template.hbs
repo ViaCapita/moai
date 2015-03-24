@@ -17,9 +17,12 @@
     {{#each model.messages as |message|}}
       {{#paper-item}}
         {{#paper-tile-left}}
-          <span class="{{if message.mine 'me' 'them'}}">{{message.sender.initial}}</span>
+          {{#if message.sender.thumbImage}}
+            <img src={{message.sender.thumbImage}} class="face">
+          {{else}}
+            <span class="{{if message.mine 'me' 'them'}}">{{message.sender.initial}}</span>
+          {{/if}}  
         {{/paper-tile-left}}
-
         {{#paper-tile-content}}
           <h3>{{message.body}}</h3>
           <p>

@@ -32,7 +32,7 @@ export default Ember.Controller.extend({
     	authenticate: function(){
     		if(this.get('valid')){
 	      	var signin = this.get("model");
-					var fb = new window.Firebase('https://amber-fire-9286.firebaseio.com');
+					var fb = new window.Firebase('https://pairsapp.firebaseio.com');
 					var that = this;
 					var emailPassword = {
 					  	email    : signin.get('email'),
