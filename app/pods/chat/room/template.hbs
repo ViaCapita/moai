@@ -5,14 +5,11 @@
         <img src="pairs-icon.png" />
       </div>         
     {{/paper-sidenav-toggle}}
-    {{model.name}}: Conversation with 
-    {{#each model.people as |person|}}{{person.email}}, {{/each}}
-    {{#link-to "chat" classNames="md-button md-default-theme" tagName="button"}}
-      Chat Home
-    {{/link-to}}
-    {{#link-to "account.settings" classNames="md-button md-default-theme" tagName="button"}}
-      Settings
-    {{/link-to}}
+    {{#if model.isPrivate}}
+      Conversation with {{model.privateName}}
+    {{else}}
+      {{model.name}}
+    {{/if}}
   </div>
 {{/paper-toolbar}}  
 {{#paper-content classNames="md-whiteframe-z1 list-demo"}}
@@ -24,7 +21,7 @@
         {{/paper-tile-left}}
 
         {{#paper-tile-content}}
-          <h3>{{message.sender.first}}: {{message.body}}</h3>
+          <h3>{{message.body}}</h3>
           <p>
             {{ago message.sentAt}}
           </p>
@@ -33,8 +30,8 @@
       {{paper-divider}} 
     {{/each}}
   {{/paper-list}}
-{{/paper-content}}<br><br><br>
-{{textarea rows="4" placeholder="Message" value=newMessageBody insertNewline="sendMessage"}}<br><br><br>
+{{/paper-content}}
+{{input type="text" placeholder="Enter your message here..." value=newMessageBody action="sendMessage" on="enter"}}
 {{#paper-button raised=true action="sendMessage" classNames="md-primary"}}
   Send Message
-{{/paper-button}}<br><br>
+{{/paper-button}}

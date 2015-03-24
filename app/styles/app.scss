@@ -47,6 +47,12 @@ body {
   font-weight: 700;
   padding: 1.1em 1.6em; }
 
+.sidenav ul li > a.nav-section__title{
+  font-weight: bold;
+  color: #2c97df;
+  font-size: 18px;
+}
+
 .sidenav ul li a:hover {
   background-color: #92cdf5; }
 
@@ -106,7 +112,7 @@ body {
 .doc-content {
   max-width: 864px;
   margin: auto; }
-  
+
 .list-demo .face {
   border-radius: 30px;
   border: 1px solid #ddd;

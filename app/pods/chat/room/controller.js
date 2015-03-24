@@ -9,7 +9,8 @@ export default Ember.Controller.extend({
   		var message = this.store.createRecord('message');
   		message.set('body', this.get('newMessageBody'));
   		message.set('room', room);
-  		message.set('sender', this.session.get('user'));
+      message.set('sender', this.session.get('user'));
+      message.set('sentAt', new Date());
       message.save();
       room.get('messages').pushObject(message);
       this.set('newMessageBody', '');
