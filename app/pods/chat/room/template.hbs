@@ -2,9 +2,13 @@
   <div class="md-toolbar-tools pairs-nav-buttons">
     {{#paper-sidenav-toggle}}
       <div class="pairs-icon">
+        {{paper-icon icon="menu"}}
         <img src="pairs-icon.png" />
-      </div>
+      </div>      
     {{/paper-sidenav-toggle}}
+    {{#link-to "my.profile" classNames="md-button md-default-theme" tagName="button"}}
+      Profile
+    {{/link-to}}  
     {{#if model.isPrivate}}
       Conversation with {{model.privateName}}
     {{else}}
