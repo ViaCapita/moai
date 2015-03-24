@@ -22,15 +22,15 @@
                   {{room.name}}
                 {{/if}}
               {{/link-to}}
-            {{/link-to}} 
+            {{/link-to}}
           {{/each}}
           <li>
               <a class="nav-section__title">ONLINE</a>
-            </li>          
-          {{#each model as |person|}}
+            </li>
+          {{#each users as |user|}}
             <li>
-              <a {{action 'findaRoom' person}}>
-                {{person.fullName}} 
+              <a {{action 'findaRoom' user}}>
+                {{user.fullName}}
               </a>
             </li>
           {{/each}}
@@ -44,7 +44,7 @@
         {{#paper-sidenav-toggle}}
           <div class="pairs-icon">
             <img src="pairs-icon.png" />
-          </div>         
+          </div>
         {{/paper-sidenav-toggle}}
         {{#link-to "chat" classNames="md-button md-default-theme" tagName="button"}}
           Chat Home
