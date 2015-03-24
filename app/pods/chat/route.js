@@ -2,14 +2,18 @@ import Ember from "ember";
 
 export default Ember.Route.extend({
   model: function(){
-    return this.store.find('user', {
-      orderBy: 'first'
+    return Ember.RSVP.hash({
+      sessionUser: this.get('session.user'),
+      users: this.store.find('user', {
+        orderBy: 'first'
+      })
     });
   },
-  setupController: function(controller, model){
-    var sessionUser = this.get('session.user.content');
+  setupController: function(controller, hash){
+    var sessionUser = hash.sessionUser;
     controller.set('rooms', sessionUser.get('messageRooms'));
-    var users = model.removeObject(sessionUser);
-    controller.set('model', users);
+
+    var users = hash.users.removeObject(sessionUser);
+    controller.set('users', users);
   }
 });
