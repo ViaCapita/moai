@@ -42,13 +42,18 @@ body {
   background-position: 50%;
   text-align: center;
   padding: 6em 2em;
-
   .controls {
     margin-top: 1em;
 
     button {
       padding: 11px 22px;
     }
+  }
+
+  img.sign-in, img.register {
+    color: white;
+    font-weight: bold;
+    margin-left: 2em;
   }
 
   a.sign-in, a.register {
