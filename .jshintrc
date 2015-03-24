@@ -2,7 +2,9 @@
   "predef": [
     "document",
     "window",
-    "-Promise"
+    "-Promise",
+    "filepicker",
+    "moment"
   ],
   "browser": true,
   "boss": true,

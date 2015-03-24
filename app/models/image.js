@@ -6,5 +6,6 @@ export default DS.Model.extend({
   size:     DS.attr('number'),
   width:    DS.attr('number'),
   height:   DS.attr('number'),
-  ready:    DS.attr('boolean', {defaultValue: false})
+  ready:    DS.attr('boolean', {defaultValue: false}),
+  user:     DS.belongsTo('user')
 });
