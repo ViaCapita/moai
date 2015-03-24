@@ -27,6 +27,12 @@ body {
 .pairs-logo img {
   height: 50px; }
 
+.pairs-logo-lg {
+  padding-left: 0px; }
+
+.pairs-logo-lg img {
+  height: 80px; }
+
 .pairs-icon {
   padding-right: 20px;
   font-size: 24px; }
@@ -37,9 +43,10 @@ body {
 .register-page, .sign-in-page {
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-image: url('/img/img-1.jpg');
-  background-position: 50%;
+  // background-size: cover;
+  // background-image: url('/img/img-1.jpg');
+  // background-position: 50%;
+  background: #20608b;
   text-align: center;
   padding: 6em 2em;
 

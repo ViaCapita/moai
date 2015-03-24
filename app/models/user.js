@@ -5,7 +5,7 @@ export default DS.Model.extend({
   first:        DS.attr('string'),
   last:         DS.attr('string'),
   profileImage: DS.belongsTo('image',{async: true}),
-  messageRooms: DS.hasMany('message-room', { async: true, inverse: 'people' }),
+  messageRooms: DS.hasMany('message-room', { async: true }),
   fullName: function(){
     return this.get('first') + " " + this.get('last');
   }.property('first', 'last'),

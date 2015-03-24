@@ -22,13 +22,13 @@ module.exports = function(environment) {
     },
     contentSecurityPolicy: {
       'default-src': "'none'",
-      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' http://api.filepicker.io/v1/filepicker.js",
+      'script-src': "'self' 'unsafe-inline' 'unsafe-eval' http://api.filepicker.io/v1/filepicker.js https://*.firebaseio.com/",
       'font-src': "'self' https://fonts.gstatic.com",
       'connect-src': "'self' wss://*.firebaseio.com/ https://auth.firebase.com/",
       'img-src': "'self' https://*.filepicker.io",
       'report-uri':"'localhost'",
       'style-src': "'self' 'unsafe-inline'",
-      'frame-src': "https://*.filepicker.io https://*.filepicker.io"
+      'frame-src': "https://*.filepicker.io https://*.filepicker.io https://*.firebaseio.com/"
     }
   };
 

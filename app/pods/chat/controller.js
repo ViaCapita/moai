@@ -9,9 +9,13 @@ export default Ember.Controller.extend({
         isPrivate: true
       });
       var sessionUser = this.get('session.user.content');
-      newRoom.get('people').pushObject(user);
-      newRoom.get('people').pushObject(sessionUser);
+      // newRoom.get('people').pushObject(user);
+      // newRoom.get('people').pushObject(sessionUser);
       newRoom.save();
+      user.get('messageRooms').pushObject(newRoom);
+      user.save();
+      sessionUser.get('messageRooms').pushObject(newRoom);    
+      sessionUser.save();       
       this.transitionToRoute('chat.room', newRoom);
     }
 	}
