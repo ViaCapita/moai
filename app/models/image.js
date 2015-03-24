@@ -9,5 +9,9 @@ export default DS.Model.extend({
   ready:    DS.attr('boolean', {defaultValue: false}),
   user:     DS.belongsTo('user', {
     inverse: 'profileImage'
-  })
+  }),
+
+  thumbUrl: function(){
+    return this.get('url') + "/convert?width=50&height=50&fit=crop"
+  }.property('url')
 });
