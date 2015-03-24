@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
       message.set('sender', this.session.get('user'));
       message.set('sentAt', new Date());
       message.save();
-      room.get('messages').pushObject(message);
+      // room.get('messages').pushObject(message);
       this.set('newMessageBody', '');
 		}
 	}

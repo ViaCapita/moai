@@ -12,10 +12,7 @@ Router.map(function() {
     this.resource('chat', function() {
       this.route('room', { path: ':room_id' });
     });       
-
-    this.resource('account', function() {
-      this.route('settings');
-    }); 
+    this.route('profile');
   });
 });
 
