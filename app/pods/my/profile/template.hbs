@@ -18,8 +18,8 @@
     {{#paper-content flex-layout="column" flex=true}}
       {{paper-text label="First Name" value=model.first}}
       {{paper-text label="Last Name" value=model.last}}
-      {{paper-text label="Profile Image" value=model.profileImage}}
-      {{file-picker serviceType="image" store=store save="save" error="error"}}
+      <img src={{model.profileImage.url}} alt={{model.profileImage.filename}} height="100"><br>
+      {{file-picker user=model serviceType="image" store=store save="save" error="error"}}
       {{#if errors.length}}
         <div class="errors">
           <h2>Errors</h2>
@@ -31,7 +31,7 @@
           <button class="btn" {{action 'clearErrors'}}>Clear Errors</button>
         </div>
       {{/if}}
-      {{#paper-button raised=true action="updateUser" classNames="md-primary"}}Primary{{/paper-button}}
+      {{#paper-button raised=true action="updateUser" classNames="md-primary"}}Update User{{/paper-button}}
     {{/paper-content}}
   {{/paper-content}}
 {{/paper-nav-container}}

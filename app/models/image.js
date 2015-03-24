@@ -7,5 +7,7 @@ export default DS.Model.extend({
   width:    DS.attr('number'),
   height:   DS.attr('number'),
   ready:    DS.attr('boolean', {defaultValue: false}),
-  user:     DS.belongsTo('user')
+  user:     DS.belongsTo('user', {
+    inverse: 'profileImage'
+  })
 });

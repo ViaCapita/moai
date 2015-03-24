@@ -5,8 +5,8 @@ export default DS.Model.extend({
   first:        DS.attr('string'),
   last:         DS.attr('string'),
   profileThumb: DS.attr('string'),
-  profileImage: DS.attr('string'),
-  messageRooms: DS.hasMany('message-room', { async: true, inverse: 'people'  }),  
+  profileImage: DS.belongsTo('image'),
+  messageRooms: DS.hasMany('message-room', { async: true, inverse: 'people' }),  
   fullName: function(){
     return this.get('first') + " " + this.get('last');
   }.property('first', 'last'),  
