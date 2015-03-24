@@ -18,7 +18,7 @@
     {{#paper-content flex-layout="column" flex=true}}
       {{paper-text label="First Name" value=model.first}}
       {{paper-text label="Last Name" value=model.last}}
-      <img src={{model.profileImage.url}} alt={{model.profileImage.filename}} height="100"><br>
+      <img src={{model.profileImage.thumbUrl}}  class="face"><br>
       {{file-picker user=model serviceType="image" store=store save="save" error="error"}}
       {{#if errors.length}}
         <div class="errors">
