@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
       usersToDisplay.removeObjects(people.content);
     }
     return usersToDisplay;
-  }.property('users', 'rooms'),
+  }.property('users', 'rooms').volatile(),
 
 	actions: {
     createRoom: function(user){
