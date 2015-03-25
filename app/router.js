@@ -8,7 +8,7 @@ Router.map(function() {
   this.route('signin'); 
   this.route('register');
 
-  this.resource('my', function() {
+  this.resource('my', { path: '/' }, function() {
     this.resource('chat', function() {
       this.route('room', { path: ':room_id' });
     });       
