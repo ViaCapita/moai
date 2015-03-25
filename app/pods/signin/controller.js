@@ -57,6 +57,7 @@ export default Ember.Controller.extend({
 								us.set('resetPassword', authData.isTemporaryPassword);
 								us.save();
                 that.session.set('user', user);
+                localStorage.setItem("localSession", JSON.stringify(us));
 						   	that.transitionToRoute("chat");
 						  }
 						});
