@@ -14,15 +14,17 @@
               <a class="nav-section__title">CHAT ROOMS</a>
             </li>
           {{#each rooms as |room|}}
-            {{#link-to 'chat.room' room.id tagName="li"}}
-              {{#link-to "chat.room" room.id}}
-                {{#if room.isPrivate}}
-                  {{room.privateName}}
-                {{else}}
-                  {{room.name}}
-                {{/if}}
+            {{#if room.isPrivate}}
+              {{#link-to 'chat.room' room.id tagName="li"}}
+                {{#link-to "chat.room" room.id}}
+                  {{#if room.isPrivate}}
+                    {{room.privateName}}
+                  {{else}}
+                    {{room.name}}
+                  {{/if}}
+                {{/link-to}}
               {{/link-to}}
-            {{/link-to}}
+            {{/if}}
           {{/each}}
           <li>
               <a class="nav-section__title">ONLINE</a>

@@ -6,6 +6,7 @@ export default Ember.Route.extend({
   },
   setupController: function(controller, model){
     this.store.find('message');
+    this.store.find('message-room');
     controller.set('model', model);
   }
 });
