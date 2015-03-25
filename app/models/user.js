@@ -10,6 +10,6 @@ export default DS.Model.extend({
     return this.get('first') + " " + this.get('last');
   }.property('first', 'last'),
   initial: function(){
-    return this.get('first').charAt(0);
+    return this.get('first').charAt(0) + this.get('last').charAt(0) ;
   }.property()
 });

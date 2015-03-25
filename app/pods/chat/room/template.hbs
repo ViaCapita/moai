@@ -30,7 +30,7 @@
         {{#paper-tile-content}}
           <h3>{{message.body}}</h3>
           <p>
-            {{ago message.sentAt}}
+            {{ago message.sentAt}} from {{message.sender.fullName}}
           </p>
         {{/paper-tile-content}}
       {{/paper-item}}

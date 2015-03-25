@@ -11,7 +11,7 @@
       <nav class="sidenav">
         <ul>
           <li>
-              <a class="nav-section__title">CHAT ROOMS</a>
+              <a class="nav-section__title">CONVERSATIONS</a>
             </li>
           {{#each rooms as |room|}}
             {{#if room.isPrivate}}
@@ -27,12 +27,12 @@
             {{/if}}
           {{/each}}
           <li>
-              <a class="nav-section__title">ONLINE</a>
+              <a class="nav-section__title">PEOPLE</a>
             </li>
-          {{#each users as |user|}}
+          {{#each usersWithoutRoom as |user|}}
             <li>
               <a {{action 'createRoom' user}}>
-                {{user.fullName}}
+                {{user.fullName}}XXX
               </a>
             </li>
           {{/each}}
