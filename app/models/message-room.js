@@ -6,7 +6,14 @@ export default DS.Model.extend({
   people:    DS.hasMany('user', { async: true }),
   isPrivate: DS.attr('boolean'),
   privateName: function(){
-    var otherUsers = this.get('people').removeObject(this.session.get('user.content'));
-    return otherUsers.get('firstObject.fullName'); 
+    var name = 'Room';
+    var me = this.session.get('user.content.id');
+    var otherUsers = this.get('people');
+    if(otherUsers.get('lastObject.id') === me){
+      name = otherUsers.get('firstObject.fullName'); 
+    } else {
+      name = otherUsers.get('lastObject.fullName'); 
+    }
+    return name;
   }.property('people')  
 });

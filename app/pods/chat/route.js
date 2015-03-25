@@ -10,10 +10,10 @@ export default Ember.Route.extend({
     });
   },
   setupController: function(controller, hash){
-    var sessionUser = hash.sessionUser;
+    var sessionUser = hash.sessionUser;   
     controller.set('rooms', sessionUser.get('messageRooms'));
-
-    var users = hash.users.removeObject(sessionUser);
+    //TODO filter out users which already have private rooms with this user
+    var users = hash.users;
     controller.set('users', users);
   }
 });
