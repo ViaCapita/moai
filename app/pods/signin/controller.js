@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
     }
     return(true);
 	}.property('model.password'),
-	
+
   	actions: {
     	clearError: function(){
     		this.set('passwordError', null);
@@ -38,7 +38,7 @@ export default Ember.Controller.extend({
 					  	email    : signin.get('email'),
 					  	password : signin.get('password')
 					};
-	 
+
 					Ember.run(function(){
 						fb.authWithPassword(emailPassword, function(error, authData) {
 						  if (error) {
@@ -46,15 +46,17 @@ export default Ember.Controller.extend({
 					    	that.set('passwordError', error);
 					  	} else {
 					    	console.log("Authenticated successfully with payload:", authData);
-                var user = that.get("store").find('user', authData.uid); 
+                var user = that.get("store").find('user', authData.uid);
 					    	var us = that.get('store').createRecord('session');
-                us.set('user', user);
-					    	us.set('uid', authData.uid);
-								us.set('provider', authData.provider);
-								us.set('auth', authData.auth);
-								us.set('expires', authData.expires);
-								us.set('email', authData.email);
-								us.set('resetPassword', authData.isTemporaryPassword);
+                us.setProperties({
+                  user:          user,
+                  uid:           authData.uid,
+                  provider:      authData.provider,
+                  auth:          authData.auth,
+                  expires:       authData.expires,
+                  email:         authData.email,
+                  resetPassword: authData.isTemporaryPassword
+                });
 								us.save();
                 that.session.set('user', user);
                 localStorage.setItem("localSession", JSON.stringify(us));
@@ -63,6 +65,6 @@ export default Ember.Controller.extend({
 						});
 					});
     		}
-    	}  
+    	}
   	}
 });
