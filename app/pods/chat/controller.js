@@ -23,13 +23,15 @@ export default Ember.Controller.extend({
         isPrivate: true
       });
       var sessionUser = this.get('session.user.content');
-      aRoom.save();
-      user.get('messageRooms').pushObject(aRoom);
-      user.save();
-      sessionUser.get('messageRooms').pushObject(aRoom);
-      sessionUser.save();
-      this.get('onlineUsers');
-      this.transitionToRoute('chat.room', aRoom);
+      var that = this;
+      aRoom.save().then(function () {
+        user.get('messageRooms').pushObject(aRoom);
+        user.save();
+        sessionUser.get('messageRooms').pushObject(aRoom);
+        sessionUser.save();
+        that.get('onlineUsers');
+        that.transitionToRoute('chat.room', aRoom);
+      });
     }
 	}
 });
