@@ -3,12 +3,13 @@ import Ember from 'ember';
 var emailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default Ember.Controller.extend({
-	passwordError: null,
-	hasPasswordError: Ember.computed.bool('passwordError'),
-	valid: Ember.computed.and('emailValidated', 'passwordValidated'),
-	emailValidated: Ember.computed.match('model.email',  emailRegExp),
-	passwordValidated: function() {
-  	var str = this.get('model.password');
+  passwordError: null,
+  hasPasswordError: Ember.computed.bool('passwordError'),
+  valid: Ember.computed.and('emailValidated', 'passwordValidated'),
+  emailValidated: Ember.computed.match('model.email',  emailRegExp),
+
+  passwordValidated: function() {
+    var str = this.get('model.password');
     if (!str) {
         return(false);
     } else if (str.length < 8) {
@@ -23,50 +24,53 @@ export default Ember.Controller.extend({
         return(false);
     }
     return(true);
-	}.property('model.password'),
+  }.property('model.password'),
 
-  	actions: {
-    	clearError: function(){
-    		this.set('passwordError', null);
-    	},
-    	authenticate: function(){
-    		if(this.get('valid')){
-	      	var signin = this.get("model");
-					var fb = new window.Firebase('https://pairsapp.firebaseio.com');
-					var that = this;
-					var emailPassword = {
-					  	email    : signin.get('email'),
-					  	password : signin.get('password')
-					};
+  actions: {
+    clearError: function(){
+      this.set('passwordError', null);
+    },
 
-					Ember.run(function(){
-						fb.authWithPassword(emailPassword, function(error, authData) {
-						  if (error) {
-						   	console.log("Login Failed!", error);
-					    	that.set('passwordError', error);
-					  	} else {
-					    	console.log("Authenticated successfully with payload:", authData);
-                var user = that.get("store").find('user', authData.uid);
-					    	var us = that.get('store').createRecord('session');
-                us.setProperties({
-                  user:          user,
-                  uid:           authData.uid,
-                  provider:      authData.provider,
-                  auth:          authData.auth,
-                  expires:       authData.expires,
-                  email:         authData.email,
-                  resetPassword: authData.isTemporaryPassword
+    authenticate: function(){
+      if(this.get('valid')){
+        var _this  = this;
+        var store  = this.get('store');
+        var signin = this.get("model");
+        var fb     = new window.Firebase('https://pairsapp.firebaseio.com');
+        var emailPassword = {
+            email:    signin.get('email'),
+            password: signin.get('password')
+        };
+
+        fb.authWithPassword(emailPassword, function(error, authData) {
+          if (!error) {
+            var user = store.find('user', authData.uid);
+
+            user.then(function(user) {
+              var session = store.createRecord('session', {
+                user:          user,
+                uid:           authData.uid,
+                provider:      authData.provider,
+                auth:          authData.auth,
+                expires:       authData.expires,
+                resetPassword: authData.isTemporaryPassword
+              });
+              session.save().then(function () {
+                Ember.run(function(){
+                  _this.session.set('user', user);
+                  _this.session.set('userSession', session);
+                  localStorage.setItem("localSession", JSON.stringify(session));
+                  _this.transitionToRoute("chat");
                 });
-                us.save().then(function () { 
-                  that.session.set('user', user);
-                  that.session.set('userSession', us);
-                  localStorage.setItem("localSession", JSON.stringify(us));
-                  that.transitionToRoute("chat");
-                });
-						  }
-						});
-					});
-    		}
-    	}
-  	}
+              });
+            });
+
+          } else {
+            console.log("Login Failed!", error);
+            _this.set('passwordError', error);
+          }
+        });
+      }
+    }
+  }
 });
