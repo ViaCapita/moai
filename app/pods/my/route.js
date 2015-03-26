@@ -10,7 +10,7 @@ export default Ember.Route.extend({
     if (!storage) {
       this.transitionTo('signin');
     } else if(!_this.session.get('user')) {
-      var promise = new Promise(function(resolve, reject) {
+      var promise = new Ember.RSVP.Promise(function(resolve, reject) {
         fb.authWithCustomToken(storage.token, function(error, authData) {
           if (error) {
             _this.transitionTo('signin');
