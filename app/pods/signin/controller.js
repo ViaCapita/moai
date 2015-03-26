@@ -57,11 +57,12 @@ export default Ember.Controller.extend({
                   email:         authData.email,
                   resetPassword: authData.isTemporaryPassword
                 });
-								us.save();
-                that.session.set('user', user);
-                that.session.set('userSession', us);
-                localStorage.setItem("localSession", JSON.stringify(us));
-						   	that.transitionToRoute("chat");
+                us.save().then(function () { 
+                  that.session.set('user', user);
+                  that.session.set('userSession', us);
+                  localStorage.setItem("localSession", JSON.stringify(us));
+                  that.transitionToRoute("chat");
+                });
 						  }
 						});
 					});
