@@ -232,47 +232,79 @@ md-nav-container {
   max-width: 864px;
   margin: auto; }
 
-.list-demo .face {
-  border-radius: 30px;
-  border: 1px solid #ddd;
-  width: 48px;
-  margin: 16px; }
+.list-demo {
+  margin-bottom: 40px;
 
-.list-demo span.them {
-  border: 1px solid #ddd;
-  margin: 16px;
-  background: #de4e43;
-  border-radius: 30px;
-  // border-radius: 0.8em;
-  // -moz-border-radius: 0.8em;
-  // -webkit-border-radius: 0.8em;
-  color: #ffffff;
-  display: inline-block;
-  font-weight: bold;
-  line-height: 48px;
-  margin-right: 5px;
-  text-align: center;
-  font-size: 24px;
-  // width: 1.6em;
-  width: 48px;
+  .face {
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    width: 48px;
+    margin: 16px;
+  }
 
+  span.them {
+    border: 1px solid #ddd;
+    margin: 16px;
+    background: #de4e43;
+    border-radius: 30px;
+    // border-radius: 0.8em;
+    // -moz-border-radius: 0.8em;
+    // -webkit-border-radius: 0.8em;
+    color: #ffffff;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 48px;
+    margin-right: 5px;
+    text-align: center;
+    font-size: 24px;
+    // width: 1.6em;
+    width: 48px;
+
+  }
+
+  span.me {
+    border: 1px solid #ddd;
+    margin: 16px;
+    background: #2c97df;
+    border-radius: 30px;
+    // border-radius: 0.8em;
+    // -moz-border-radius: 0.8em;
+    // -webkit-border-radius: 0.8em;
+    color: #ffffff;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 48px;
+    margin-right: 5px;
+    text-align: center;
+    font-size: 24px;
+    // width: 1.6em;
+    width: 48px;
+  }
 }
 
-.list-demo span.me {
-  border: 1px solid #ddd;
-  margin: 16px;
-  background: #2c97df;
-  border-radius: 30px;
-  // border-radius: 0.8em;
-  // -moz-border-radius: 0.8em;
-  // -webkit-border-radius: 0.8em;
-  color: #ffffff;
-  display: inline-block;
-  font-weight: bold;
-  line-height: 48px;
-  margin-right: 5px;
-  text-align: center;
-  font-size: 24px;
-  // width: 1.6em;
-  width: 48px;
+.input-area {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: .5em;
+  border-top: 2px solid #ddd;
+  width: 100%;
+  margin-left: 1px;
+  background-color: white;
+  display: table;
+
+  .input-holder {
+    width: 90%;
+    display: table-cell;
+    padding-right: 10px;
+  }
+
+  input {
+    margin-right: 5px;
+    width: 100%;
+  }
+
+  button {
+    display: table-cell;
+  }
 }
