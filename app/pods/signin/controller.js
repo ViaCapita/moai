@@ -60,7 +60,6 @@ export default Ember.Controller.extend({
 								us.save();
                 that.session.set('user', user);
                 that.session.set('userSession', us);
-                
                 localStorage.setItem("localSession", JSON.stringify(us));
 						   	that.transitionToRoute("chat");
 						  }

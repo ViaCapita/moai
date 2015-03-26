@@ -6,6 +6,7 @@ export default DS.Model.extend({
   room:   DS.belongsTo('message-room', { async: true }),
   sentAt: DS.attr('date'),
   mine: function(){
-    return this.session.get('user.id') === this.get('sender.id');
+    var isMine = this.session.get('user.id') === this.get('sender.id');
+    return isMine;
   }.property('sender')
 });

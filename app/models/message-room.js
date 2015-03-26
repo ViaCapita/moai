@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+/* global moment */
 
 export default DS.Model.extend({ 
   name:      DS.attr('string'), 
@@ -15,5 +16,16 @@ export default DS.Model.extend({
       name = otherUsers.get('lastObject.fullName'); 
     }
     return name;
-  }.property('people')  
+  }.property('people'),
+  messageCount: function(){
+    var messages = this.get('messages');
+    var theirMessages = messages.filterBy('mine', true);
+    var now = moment(); 
+    var fiveMinAgo = now.subtract(5, 'minutes');
+    debugger
+    theirMessages.filter(function(item, index, theirMessages) {
+      if (moment(item.get('sentAt')) > fiveMinAgo) { return true; }
+    })
+    return theirMessages.get('length');
+  }.property('messages.@each.mine')
 });

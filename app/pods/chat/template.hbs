@@ -22,6 +22,7 @@
                   {{else}}
                     {{room.name}}
                   {{/if}}
+                    ({{room.messageCount}})
                 {{/link-to}}
               {{/link-to}}
             {{/if}}
@@ -29,7 +30,7 @@
           <li>
               <a class="nav-section__title">PEOPLE</a>
             </li>
-          {{#each usersWithoutRoom as |user|}}
+          {{#each onlineUsers as |user|}}
             <li>
               <a {{action 'createRoom' user}}>
                 {{user.fullName}}

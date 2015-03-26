@@ -14,7 +14,8 @@
     "qunit": "~1.17.1",
     "hammerjs": "~2.0.4",
     "firebase": "2.1.x",
-    "ember-cli-moment-shim": "~0.0.3"
+    "ember-cli-moment-shim": "~0.0.3",
+    "momentjs": "~2.9.0"
   },
   "resolutions": {
     "ember": "canary"

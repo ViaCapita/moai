@@ -4,11 +4,11 @@
       <div class="pairs-icon">
         {{paper-icon icon="menu"}}
         <img src="pairs-icon.png" />
-      </div>      
+      </div>
     {{/paper-sidenav-toggle}}
     {{#link-to "my.profile" classNames="md-button md-default-theme" tagName="button"}}
       Profile
-    {{/link-to}}  
+    {{/link-to}}
     {{#if model.isPrivate}}
       Conversation with {{model.privateName}}
     {{else}}
@@ -38,7 +38,11 @@
     {{/each}}
   {{/paper-list}}
 {{/paper-content}}
-{{input type="text" placeholder="Enter your message here..." value=newMessageBody action="sendMessage" on="enter"}}
-{{#paper-button raised=true action="sendMessage" classNames="md-primary"}}
-  Send Message
-{{/paper-button}}
+<div class="input-area">
+  <div class="input-holder">
+    {{input type="text" placeholder="Enter your message here..." value=newMessageBody action="sendMessage" on="enter"}}
+  </div>
+  {{#paper-button raised=true action="sendMessage" classNames="md-primary"}}
+    Send Message
+  {{/paper-button}}
+</div>

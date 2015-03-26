@@ -28,6 +28,7 @@ export default Ember.Route.extend({
             resetPassword: authData.isTemporaryPassword
           });
           us.save();
+          
           _this.session.set('user', user);
           _this.session.set('userSession', us);
           _this.transitionTo("chat");
