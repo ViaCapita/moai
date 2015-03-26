@@ -2,17 +2,15 @@
   {{#paper-sidenav classNames="md-sidenav-left md-whiteframe-z2" flex-layout="column" flex=true}}
     {{#paper-toolbar}}
       <div class="md-toolbar-tools">
-        <div class="pairs-logo">
+        {{#link-to "chat" classNames="pairs-logo"}}
           <img src="pairs-logo.png" />
-        </div>
+        {{/link-to}}
       </div>
     {{/paper-toolbar}}
     {{#paper-content}}
       <nav class="sidenav">
         <ul>
-          <li>
-              <a class="nav-section__title">CONVERSATIONS</a>
-            </li>
+          <li><a class="nav-section__title">CONVERSATIONS</a></li>
           {{#each rooms as |room|}}
             {{#if room.isPrivate}}
               {{#link-to 'chat.room' room.id tagName="li"}}
@@ -22,41 +20,19 @@
                   {{else}}
                     {{room.name}}
                   {{/if}}
-                    ({{room.messageCount}})
                 {{/link-to}}
               {{/link-to}}
             {{/if}}
           {{/each}}
-          <li>
-              <a class="nav-section__title">PEOPLE</a>
-            </li>
+          <li><a class="nav-section__title">PEOPLE</a></li>
           {{#each onlineUsers as |user|}}
-            <li>
-              <a {{action 'createRoom' user}}>
-                {{user.fullName}}
-              </a>
-            </li>
+            <li><a {{action 'createRoom' user}}>{{user.fullName}}</a></li>
           {{/each}}
         </ul>
       </nav>
     {{/paper-content}}
   {{/paper-sidenav}}
   {{#paper-content flex-layout="column" flex=true}}
-{{!--     {{#paper-toolbar}}
-      <div class="md-toolbar-tools pairs-nav-buttons">
-        {{#paper-sidenav-toggle}}
-          <div class="pairs-icon">
-            <img src="pairs-icon.png" />
-          </div>
-        {{/paper-sidenav-toggle}}
-        {{#link-to "chat" classNames="md-button md-default-theme" tagName="button"}}
-          Chat Home
-        {{/link-to}}
-        {{#link-to "my.profile" classNames="md-button md-default-theme" tagName="button"}}
-          Settings
-        {{/link-to}}
-      </div>
-    {{/paper-toolbar}}   --}}
     {{#paper-content flex-layout="column" flex=true}}
       {{outlet}}
     {{/paper-content}}

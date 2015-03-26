@@ -25,7 +25,6 @@ export default Ember.Controller.extend({
         return room.save();
       });
       this.set('newMessageBody', '');
-
 		}
 	},
 

@@ -6,11 +6,13 @@
         <img src="pairs-icon.png" />
       </div>
     {{/paper-sidenav-toggle}}
-    {{#link-to "my.profile" classNames="md-button md-default-theme" tagName="button"}}
-      Profile
-    {{/link-to}}
     {{#if model.isPrivate}}
-      Conversation with {{model.privateName}}
+      {{#each model.people as |person|}}
+        {{#if person.profileImage.url}}
+          <img src={{person.profileImage.thumbUrl}} class="face">
+        {{/if}} 
+        &nbsp;&nbsp;{{person.fullName}}&nbsp;&nbsp;
+      {{/each}}
     {{else}}
       {{model.name}}
     {{/if}}
