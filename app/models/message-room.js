@@ -22,10 +22,9 @@ export default DS.Model.extend({
     var theirMessages = messages.filterBy('mine', true);
     var now = moment(); 
     var fiveMinAgo = now.subtract(5, 'minutes');
-    debugger
-    theirMessages.filter(function(item, index, theirMessages) {
-      if (moment(item.get('sentAt')) > fiveMinAgo) { return true; }
-    })
-    return theirMessages.get('length');
+    var recentMessages = theirMessages.filter(function(item) {
+      if (moment(item.get('sentAt')) < fiveMinAgo) { return true; }
+    });
+    return recentMessages.length;
   }.property('messages.@each.mine')
 });

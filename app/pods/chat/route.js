@@ -10,10 +10,7 @@ export default Ember.Route.extend({
     });      
   },
   setupController: function(controller, hash){
-    var sessionUser = hash.sessionUser;   
     controller.set('sessionUser', hash.sessionUser);
-    
-    //TODO filter out users which already have private rooms with this user
     var users = hash.users;
     controller.set('users', users);
   }
