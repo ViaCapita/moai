@@ -10,6 +10,7 @@ export default DS.Model.extend({
     var name = 'Room';
     var me = this.session.get('user.content.id');
     var otherUsers = this.get('people');
+    debugger
     if(otherUsers.get('lastObject.id') === me){
       name = otherUsers.get('firstObject.fullName'); 
     } else {

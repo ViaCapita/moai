@@ -8,7 +8,7 @@
     {{/paper-sidenav-toggle}}
     {{#if model.isPrivate}}
       {{#each model.people as |person|}}
-        {{#if person.profileImage.url}}
+        {{#if person.profileImage}}
           <img src={{person.profileImage.thumbUrl}} class="face">
         {{/if}} 
         &nbsp;&nbsp;{{person.fullName}}&nbsp;&nbsp;
