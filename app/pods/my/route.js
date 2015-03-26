@@ -2,7 +2,7 @@ import Ember from "ember";
 
 export default Ember.Route.extend({
   model: function(){
-    var _this   = this;
+    var that   = this;
     var storage = JSON.parse(localStorage.getItem("firebase:session::pairsapp"));
     // var localSession = JSON.parse(localStorage.getItem("localSession"));
     var fb      = new window.Firebase('https://pairsapp.firebaseio.com');
@@ -10,14 +10,14 @@ export default Ember.Route.extend({
     if (!storage) { 
       this.transitionTo('signin'); 
     } else 
-    if(!_this.session.get('user')) {
+    if(!that.session.get('user')) {
       fb.authWithCustomToken(storage.token, function(error, authData) {
         if (error) {
           this.transitionTo('signin'); 
         } else {
           console.log("Authenticated successfully with token:", authData);
-          var user = _this.get("store").find('user', authData.uid);
-          var us   = _this.get('store').createRecord('session');
+          var user = that.get("store").find('user', authData.uid);
+          var us   = that.get('store').createRecord('session');
           us.setProperties({
             user:          user,
             uid:           authData.uid,
@@ -27,11 +27,12 @@ export default Ember.Route.extend({
             email:         authData.email,
             resetPassword: authData.isTemporaryPassword
           });
-          us.save();
-          
-          _this.session.set('user', user);
-          _this.session.set('userSession', us);
-          _this.transitionTo("chat");
+          us.save().then(function () { 
+            that.session.set('user', user);
+            that.session.set('userSession', us);
+            localStorage.setItem("localSession", JSON.stringify(us));
+            that.transitionTo("chat");
+          });
         }
       });
     }
