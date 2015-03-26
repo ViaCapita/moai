@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   loggedIn: Ember.computed.alias('session.isConnected'),
   users: null,
-  rooms: Ember.computed.alias('sessionUser.messageRooms'), 
+  rooms: Ember.computed.alias('sessionUser.messageRooms'),
   sessionUser: null,
 
   onlineUsers: function() {
@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
       usersToDisplay.removeObjects(people.content);
     }
     return usersToDisplay;
-  }.property('users', 'rooms').volatile(),
+  }.property('users.[]', 'rooms.[]'),
 
 	actions: {
     createRoom: function(user){
@@ -26,8 +26,8 @@ export default Ember.Controller.extend({
       aRoom.save();
       user.get('messageRooms').pushObject(aRoom);
       user.save();
-      sessionUser.get('messageRooms').pushObject(aRoom);    
-      sessionUser.save();  
+      sessionUser.get('messageRooms').pushObject(aRoom);
+      sessionUser.save();
       this.get('onlineUsers');
       this.transitionToRoute('chat.room', aRoom);
     }
