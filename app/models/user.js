@@ -4,6 +4,10 @@ export default DS.Model.extend({
   email: 	      DS.attr('string'),
   first:        DS.attr('string'),
   last:         DS.attr('string'),
+  gender:       DS.attr('string'),
+  facebookId:   DS.attr('string'),
+  locale:       DS.attr('string'),
+  timezone:     DS.attr('number'),
   profileImage: DS.belongsTo('image',{async: true}),
   messageRooms: DS.hasMany('message-room', { async: true }),
   fullName: function(){

@@ -2,18 +2,29 @@ import Ember from "ember";
 
 export default Ember.Object.extend({
   open: function(authorization) {
-    let store = this.get("container").lookup("store:main");
-
     return new Ember.RSVP.Promise((resolve) => {
-      return store.find("user", authorization.uid).then(function(user){ 
-        Ember.run.bind(null, resolve({currentUser: user}));
-      }, () => {
-        let data = this._handleFor(authorization);
-        let user = store.createRecord("user", data);
-        user.save().then(function(user) {
-          Ember.run.bind(null, resolve({currentUser: user}));
-        });
-      });
+      let user = this.findUser(authorization);
+
+      if(!user){
+        user = this.createUser(authorization);
+      }
+      Ember.run.bind(null, resolve({currentUser: user}));
+    });
+  },
+
+  createUser: function(authorization){
+    let store = this.get("container").lookup("store:main");
+    let data  = this.importAccountData(authorization);
+    store.unloadAll("user");
+    let user  = store.createRecord("user", data);
+    user.save().then(function(user) {
+      return user;
+    });
+  },
+  findUser: function(authorization){
+    let store = this.get("container").lookup("store:main");
+    store.find("user", authorization.uid).then(function(user){ 
+      return user;
     });
   },
 
@@ -50,12 +61,16 @@ export default Ember.Object.extend({
     });
   },
 
-  _handleFor: function(authorization) {
+  importAccountData: function(authorization) {
     let store = this.get("container").lookup("store:main");
     if(authorization.github) {
-      store.find('user', authorization.auth.uid).then(function (user) {
-        return user;
-      });
+      return {
+        id: authorization.uid,
+        first: authorization.facebook.cachedUserProfile.first_name,
+        last: authorization.facebook.cachedUserProfile.last_name,
+        gender: authorization.facebook.cachedUserProfile.gender,
+        facebookId: authorization.facebook.id
+      };  
     } else if(authorization.facebook) {
       return {
         id: authorization.uid,
@@ -65,15 +80,21 @@ export default Ember.Object.extend({
         facebookId: authorization.facebook.id
       };    
     } else if(authorization.twitter) {
-      store.find('user', authorization.auth.uid).then(function (user) {
-        return user;
-      });
+      return {
+        id: authorization.uid,
+        first: authorization.facebook.cachedUserProfile.first_name,
+        last: authorization.facebook.cachedUserProfile.last_name,
+        gender: authorization.facebook.cachedUserProfile.gender,
+        facebookId: authorization.facebook.id
+      };  
     } else if(authorization.google) {
-      store.find('user', authorization.auth.uid).then(function (user) {
-        return user;
-      });
-    } else {
-      throw new Error("couldn't find a username!");
+      return {
+        id: authorization.uid,
+        first: authorization.facebook.cachedUserProfile.first_name,
+        last: authorization.facebook.cachedUserProfile.last_name,
+        gender: authorization.facebook.cachedUserProfile.gender,
+        facebookId: authorization.facebook.id
+      };  
     }
   }
 });
