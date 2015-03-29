@@ -10,14 +10,13 @@
         {{#link-to "chat" classNames="md-button md-default-theme" tagName="button"}}
           Chat Home
         {{/link-to}}
-        {{#link-to "my.profile" classNames="md-button md-default-theme" tagName="button"}}
-          Settings
-        {{/link-to}}
       </div>
     {{/paper-toolbar}}
     {{#paper-content flex-layout="column" flex=true class="form-content"}}
       {{paper-text label="First Name" value=model.first}}
       {{paper-text label="Last Name" value=model.last}}
+      {{paper-text label="Email" value=model.email type='email'}}
+      {{paper-text label="Authentication Method" value=model.provider disabled=true}}
       {{#if errors.length}}
         <div class="errors">
           <h2>Errors</h2>

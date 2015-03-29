@@ -2,10 +2,9 @@ import Ember from "ember";
 
 export default Ember.Route.extend({
   model: function(){
-  	return this.get('store').createRecord('user');
+    return this.get("session.content.currentUser");
   },
   setupController: function(controller, model){
-    model = this.get('session.user.content');
     controller.set('errors', []);
     controller.set('model', model);
   }

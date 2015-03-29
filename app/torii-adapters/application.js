@@ -62,14 +62,15 @@ export default Ember.Object.extend({
   },
 
   importAccountData: function(authorization) {
-    let store = this.get("container").lookup("store:main");
     if(authorization.github) {
       return {
         id: authorization.uid,
-        first: authorization.facebook.cachedUserProfile.first_name,
-        last: authorization.facebook.cachedUserProfile.last_name,
-        gender: authorization.facebook.cachedUserProfile.gender,
-        facebookId: authorization.facebook.id
+        email: authorization.github.cachedUserProfile.email,
+        githubUsername: authorization.github.username,
+        first: authorization.github.username,
+        last: authorization.github.username,
+        provider: authorization.provider,
+        isNewAccount: true
       };  
     } else if(authorization.facebook) {
       return {
@@ -77,7 +78,8 @@ export default Ember.Object.extend({
         first: authorization.facebook.cachedUserProfile.first_name,
         last: authorization.facebook.cachedUserProfile.last_name,
         gender: authorization.facebook.cachedUserProfile.gender,
-        facebookId: authorization.facebook.id
+        facebookId: authorization.facebook.id,
+        isNewAccount: true
       };    
     } else if(authorization.twitter) {
       return {
