@@ -8,14 +8,15 @@ export default Ember.Controller.extend({
 
   onlineUsers: function() {
     var usersToDisplay = Ember.A(this.get('users'));
-    var allRooms = Ember.A(this.get('rooms'));
+    var allPrivateRooms = Ember.A(this.get('rooms').filterBy('isPrivate', true));
 
-    if(!allRooms.get('content.length')) {
-        var me = this.get('session.user');
-        usersToDisplay.removeObject(me);
-    } else {
-      for (var i = allRooms.get('content.length') - 1; i >= 0; i--) {
-        var room = allRooms.get('content').objectAt(i);
+    if(!allPrivateRooms.get('content.length')) {
+      var me = this.get('session.user');
+      usersToDisplay.removeObject(me);
+    } 
+    else {
+      for (var i = allPrivateRooms.get('content.length') - 1; i >= 0; i--) {
+        var room = allPrivateRooms.get('content').objectAt(i);
         var people = room.get('people.content');
         usersToDisplay.removeObjects(people.content);
       }      
@@ -26,21 +27,26 @@ export default Ember.Controller.extend({
 
 	actions: {
     createRoom: function(user){
-      var aRoom = this.store.createRecord('message-room', {
-        isPrivate: true
-      });
-
-      var sessionUser = this.get('session.user');
       var that = this;
+      var sessionUser = that.get('session.user');
+      var aRoom = that.store.createRecord('message-room', {
+        isPrivate: true,
+        people: [user, sessionUser]
+      });
       
       aRoom.save().then(function () {
-        user.get('messageRooms').pushObject(aRoom);
-        user.save();
         sessionUser.get('messageRooms').pushObject(aRoom);
-        sessionUser.save();
-        that.get('onlineUsers');
-        that.transitionToRoute('chat.room', aRoom);
+        user.get('messageRooms').pushObject(aRoom);
+        user.save().then(function () {
+          sessionUser.save().then(function () {
+            that.get('onlineUsers');
+            that.transitionToRoute('chat.room', aRoom);
+          });
+        });
       });
-    }
+    },
+    logout: function() {
+      this.get("session").close();
+    }    
 	}
 });
