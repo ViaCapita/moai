@@ -5,6 +5,7 @@ export default Ember.Controller.extend({
     	updateUser: function(){
         let that = this;
 	      var sessionUser = that.get('model');
+        sessionUser.isNewAccount = false;
 	      sessionUser.save().then(function () {
           that.transitionToRoute('chat');
         });

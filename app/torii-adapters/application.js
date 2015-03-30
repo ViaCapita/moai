@@ -78,6 +78,7 @@ export default Ember.Object.extend({
         last: authorization.facebook.cachedUserProfile.last_name,
         gender: authorization.facebook.cachedUserProfile.gender,
         facebookId: authorization.facebook.id,
+        provider: authorization.provider,
         isNewAccount: true
       };    
     } else if(authorization.twitter) {
@@ -85,14 +86,17 @@ export default Ember.Object.extend({
         id: authorization.uid,
         first: authorization.twitter.displayName.split(' ').slice(0, -1).join(' '),
         last: authorization.twitter.displayName.split(' ').slice(-1).join(' '),
-        twitterUsername: authorization.twitter.username
+        twitterUsername: authorization.twitter.username,
+        provider: authorization.provider,
+        isNewAccount: true
       };  
     } else if(authorization.google) {
       return {
         id: authorization.uid,
         first: authorization.google.cachedUserProfile.given_name,
         last: authorization.google.cachedUserProfile.family_name,
-        email: authorization.google.cachedUserProfile.email
+        provider: authorization.provider,
+        isNewAccount: true
       };  
     }
   }
