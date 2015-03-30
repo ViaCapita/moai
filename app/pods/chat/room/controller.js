@@ -18,7 +18,7 @@ export default Ember.Controller.extend({
   		var message = this.store.createRecord('message');
   		message.set('body', this.get('newMessageBody'));
   		message.set('room', room);
-      message.set('sender', this.session.get('user.content'));
+      message.set('sender', this.get("session.currentUser"));
       message.set('sentAt', new Date());
       message.save().then(() => {
         scrollDown();

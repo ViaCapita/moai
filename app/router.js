@@ -5,15 +5,10 @@ var Router = Ember.Router.extend({
   location: config.locationType
 });
 Router.map(function() {
-  this.route('signin'); 
-  this.route('register');
-
-  this.resource('my', { path: '/' }, function() {
-    this.resource('chat', function() {
-      this.route('room', { path: ':room_id' });
-    });       
-    this.route('profile');
-  });
+  this.resource('chat', function() {
+    this.route('room', { path: ':room_id' });
+  });       
+  this.route('profile');
 });
 
 export default Router;

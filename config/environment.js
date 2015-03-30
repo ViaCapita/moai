@@ -4,11 +4,14 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'pairs',
     podModulePrefix: 'pairs/pods',
-    firebase_instance: 'pairsapp',
+    firebase: 'https://pairsapp.firebaseio.com/',
     filepickerAPIKey: 'Aak0jm0AZRJufIXzDqgjoz',    
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    locationType: 'auto',    
+    torii: {
+      sessionServiceName: 'session'
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

@@ -5,9 +5,12 @@
         <img src="pairs-icon.png" />
       </div>         
     {{/paper-sidenav-toggle}}
-    {{#link-to "my.profile" classNames="md-button md-default-theme" tagName="button"}}
+    {{#link-to "profile" classNames="md-button md-default-theme" tagName="button"}}
       Profile
     {{/link-to}}
-  </div>
+    {{#paper-button raised=true action="logout"}}
+      Log Out
+    {{/paper-button}}  
+</div>
 {{/paper-toolbar}} 
 {{outlet}} 

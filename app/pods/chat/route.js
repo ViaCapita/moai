@@ -3,7 +3,7 @@ import Ember from "ember";
 export default Ember.Route.extend({
   model: function(){
     return Ember.RSVP.hash({
-      sessionUser: this.store.find('user', this.get('session.userSession.uid')),
+      sessionUser: this.get("session.content.currentUser"),
       users: this.store.filter('user', { // live array
         orderBy: 'first'
       }, function () { return true; })
