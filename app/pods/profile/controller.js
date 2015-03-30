@@ -3,9 +3,10 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   	actions: {
     	updateUser: function(){
-	      var sessionUser = this.get('model');
+        let that = this;
+	      var sessionUser = that.get('model');
 	      sessionUser.save().then(function () {
-          this.transitionToRoute('chat');
+          that.transitionToRoute('chat');
         });
     	},
       save: function(file){ // we're passing the record up from the file-picker component

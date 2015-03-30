@@ -28,12 +28,12 @@ export default Ember.Controller.extend({
 	actions: {
     createRoom: function(user){
       var that = this;
-      var sessionUser = this.get("session").fetch().catch(function() {});
+      var sessionUser = this.get("session.content.currentUser");
       var aRoom = that.store.createRecord('message-room', {
-        isPrivate: true,
-        people: [user, sessionUser]
+        isPrivate: true
       });
-      
+      aRoom.get('people').pushObject(user);
+      aRoom.get('people').pushObject(sessionUser);
       aRoom.save().then(function () {
         sessionUser.get('messageRooms').pushObject(aRoom);
         user.get('messageRooms').pushObject(aRoom);
@@ -44,6 +44,7 @@ export default Ember.Controller.extend({
           });
         });
       });
+
     },
     logout: function() {
       this.get("session").close();

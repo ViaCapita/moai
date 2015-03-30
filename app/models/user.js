@@ -6,9 +6,12 @@ export default DS.Model.extend({
   last:         DS.attr('string'),
   gender:       DS.attr('string'),
   facebookId:   DS.attr('string'),
+  googleId:   DS.attr('string'),
   locale:       DS.attr('string'),
   timezone:     DS.attr('number'),
   provider:         DS.attr('string'),
+  githubUsername:         DS.attr('string'),
+  twitterUsername:         DS.attr('string'),
   profileImage: DS.belongsTo('image',{async: true}),
   messageRooms: DS.hasMany('message-room', { async: true }),
   fullName: function(){

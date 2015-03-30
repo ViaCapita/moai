@@ -2,29 +2,28 @@ import Ember from "ember";
 
 export default Ember.Object.extend({
   open: function(authorization) {
-    return new Ember.RSVP.Promise((resolve) => {
-      let user = this.findUser(authorization);
-
-      if(!user){
-        user = this.createUser(authorization);
-      }
-      Ember.run.bind(null, resolve({currentUser: user}));
-    });
-  },
-
-  createUser: function(authorization){
     let store = this.get("container").lookup("store:main");
-    let data  = this.importAccountData(authorization);
-    store.unloadAll("user");
-    let user  = store.createRecord("user", data);
-    user.save().then(function(user) {
-      return user;
-    });
-  },
-  findUser: function(authorization){
-    let store = this.get("container").lookup("store:main");
-    store.find("user", authorization.uid).then(function(user){ 
-      return user;
+    let that = this;
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      store.find("user", authorization.uid).then(function(user) {
+        console.log('User Found:', user);
+        Ember.run.bind(null, resolve({currentUser: user}));
+      }, function() {
+        let data  = that.importAccountData(authorization);
+        console.log('User Data Imported:', data);
+        store.unloadAll("user");
+        console.log('Users unloaded');
+        let newUser  = store.createRecord("user", data);
+        console.log('New User Created:', newUser);
+        console.log('User Data Imported:', data);
+        newUser.save().then(function(nuser) {
+          console.log('New User Set into Session:', nuser);
+          Ember.run.bind(null, resolve({currentUser: nuser}));
+        }, function() {
+          console.log('No User Found');
+          Ember.run.bind(null, reject("no user"));
+        });
+      });
     });
   },
 
@@ -84,18 +83,16 @@ export default Ember.Object.extend({
     } else if(authorization.twitter) {
       return {
         id: authorization.uid,
-        first: authorization.facebook.cachedUserProfile.first_name,
-        last: authorization.facebook.cachedUserProfile.last_name,
-        gender: authorization.facebook.cachedUserProfile.gender,
-        facebookId: authorization.facebook.id
+        first: authorization.twitter.displayName.split(' ').slice(0, -1).join(' '),
+        last: authorization.twitter.displayName.split(' ').slice(-1).join(' '),
+        twitterUsername: authorization.twitter.username
       };  
     } else if(authorization.google) {
       return {
         id: authorization.uid,
-        first: authorization.facebook.cachedUserProfile.first_name,
-        last: authorization.facebook.cachedUserProfile.last_name,
-        gender: authorization.facebook.cachedUserProfile.gender,
-        facebookId: authorization.facebook.id
+        first: authorization.google.cachedUserProfile.given_name,
+        last: authorization.google.cachedUserProfile.family_name,
+        email: authorization.google.cachedUserProfile.email
       };  
     }
   }
