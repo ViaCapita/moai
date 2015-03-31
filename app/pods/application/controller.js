@@ -3,9 +3,10 @@ import Ember from 'ember';
 var emailRegExp = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 export default Ember.Controller.extend({
+  currentUser: null,
   passwordError: '',
   emailValidated: Ember.computed.match('model.email',  emailRegExp),
-
+  
   passwordConfirmed: function() {
     return this.get('model.password') && this.get('model.password') === this.get('model.confirmation');
   }.property('model.password', 'model.confirmation'),
@@ -43,6 +44,12 @@ export default Ember.Controller.extend({
     },
     googleAuthenticate: function() {
       this.get("session").open("firebase", { authWith: 'google'});
+    },
+    normalSignin: function() {
+      this.set("moaiSignin", true);
+    },
+    socialSignin: function() {
+      this.set("moaiSignin", false);
     }
     // ,
     // authenticate: function(){

@@ -234,6 +234,11 @@ $button-raised-hover-background-color: rgba(map-get($button-raised-color-palette
     fill: $button-primary-color;
   }
 
+  &.md-moai {
+    color: $button-primary-color;
+    fill: $button-primary-color;
+  }
+
   &.md-warn {
     color: $button-warn-color;
     fill: $button-warn-color;
@@ -292,8 +297,21 @@ $button-raised-hover-background-color: rgba(map-get($button-raised-color-palette
       }
     }
 
+    &.md-moai {
+      color: $button-primary-raised-color;
+      width: 510px;
+      background-color: $button-primary-raised-background-color;
+      &:not([disabled]) {
+        &:hover,
+        &:focus {
+          background-color: $button-primary-raised-hover-background-color;
+        }
+      }
+    }
+
     &.md-google {
       color: $button-warn-raised-color;
+      width: 250px;
       background-color: #e84c3d;
       // font-size: 16px;
       &:not([disabled]) {
@@ -306,6 +324,7 @@ $button-raised-hover-background-color: rgba(map-get($button-raised-color-palette
 
     &.md-facebook {
       color: $button-warn-raised-color;
+      width: 250px;
       background-color: #297fb8;
       // font-size: 16px;
       &:not([disabled]) {
@@ -318,6 +337,7 @@ $button-raised-hover-background-color: rgba(map-get($button-raised-color-palette
 
     &.md-github {
       color: $button-warn-raised-color;
+      width: 250px;
       background-color: #171516;
       // font-size: 16px;
       &:not([disabled]) {
@@ -330,6 +350,7 @@ $button-raised-hover-background-color: rgba(map-get($button-raised-color-palette
 
     &.md-twitter {
       color: $button-warn-raised-color;
+      width: 250px;
       background-color: #3598dc;
       // font-size: 16px;
       &:not([disabled]) {

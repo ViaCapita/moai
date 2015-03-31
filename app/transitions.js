@@ -1,6 +1,19 @@
 export default function(){
 	this.transition(
-	    this.hasClass('requestInvite'),
+	    this.hasClass('moaiSignIn'),
+
+	    // this makes our rule apply when the liquid-if transitions to the
+	    // true state.
+	    this.toModel(true),
+	    this.use('crossFade', {duration: 1000}),
+
+	    // which means we can also apply a reverse rule for transitions to
+	    // the false state.
+	    this.reverse('crossFade', {duration: 1000})
+	);
+	
+	this.transition(
+	    this.hasClass('nowAccount'),
 
 	    // this makes our rule apply when the liquid-if transitions to the
 	    // true state.
