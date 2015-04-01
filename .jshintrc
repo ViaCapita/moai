@@ -3,8 +3,8 @@
     "document",
     "window",
     "-Promise",
-    "filepicker",
-    "moment"
+    "moment",
+    "filepicker"
   ],
   "browser": true,
   "boss": true,
