@@ -7,6 +7,7 @@ export default DS.Model.extend({
   people:    DS.hasMany('user', { async: true }), 
   organization:  DS.belongsTo('organization', { async: true }),
   isPrivate: DS.attr('boolean'),
+  oneOnOne: DS.attr('boolean'),
   privateName: function(){
     var name = 'Room';
     
