@@ -12,7 +12,7 @@ var App = Ember.Application.extend({
   Resolver: Resolver
 });
 
-// filepicker.setKey(config.filepickerAPIKey);
+filepicker.setKey(config.filepickerAPIKey);
 loadInitializers(App, config.modulePrefix);
 
 export default App;

@@ -39,7 +39,7 @@
     "emberfire": "git://github.com/firebase/emberfire",
     "express": "^4.8.5",
     "glob": "^4.0.5",
-    "liquid-fire": "git+https://github.com/ef4/liquid-fire.git",
+    "liquid-fire": "git://github.com/ef4/liquid-fire",
     "torii": "0.2.3",
     "torii-fire": "0.2.0"
   }

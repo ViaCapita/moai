@@ -2,7 +2,7 @@
   "name": "pairs",
   "dependencies": {
     "jquery": "^1.11.1",
-    "ember": "components/ember#canary",
+    "ember": "1.11.0",
     "ember-data": "1.0.0-beta.12",
     "ember-resolver": "~0.1.14",
     "loader.js": "ember-cli/loader.js#3.2.0",
@@ -16,9 +16,6 @@
     "firebase": "2.1.x",
     "ember-cli-moment-shim": "~0.0.3",
     "momentjs": "~2.9.0"
-  },
-  "resolutions": {
-    "ember": "canary"
   },
   "devDependencies": {
     "filepicker": "*"
