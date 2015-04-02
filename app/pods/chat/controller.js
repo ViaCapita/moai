@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
 
   onlineUsers: function() {
     var usersToDisplay = this.get('allUsers');
-    var usersRooms = Ember.A(this.get('rooms'));
+    // var usersRooms = Ember.A(this.get('rooms'));
     
     // if(usersRooms.get('length')){
     //   var allRooms = this.get('rooms').filterBy('isPrivate', true);

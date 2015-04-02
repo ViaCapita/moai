@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   tagName: '',
   name: function(){
-    var room = this.get('room');
     var name = this.get('room.name');
     if(this.get('room.isPrivate')){
       var otherUsers = this.get('room.people');
@@ -11,7 +10,7 @@ export default Ember.Component.extend({
       var firstUser = otherUsers.get('firstObject');
       if(lastUser === this.get('me')){
         name = otherUsers.get('firstObject.fullName'); 
-      } else {
+      } else if(firstUser === this.get('me')) {
         name = otherUsers.get('lastObject.fullName'); 
       }      
     }
