@@ -8,19 +8,6 @@ export default DS.Model.extend({
   organization:  DS.belongsTo('organization', { async: true }),
   isPrivate: DS.attr('boolean'),
   oneOnOne: DS.attr('boolean'),
-  privateName: function(){
-    var name = 'Room';
-    
-    var me = this.get("session.currentUser.id");
-    var otherUsers = this.get('people');
-    
-    if(otherUsers.get('lastObject.id') === me){
-      name = otherUsers.get('firstObject.fullName'); 
-    } else {
-      name = otherUsers.get('lastObject.fullName'); 
-    }
-    return name;
-  }.property('people'),
   messageCount: function(){
     var messages = this.get('messages');
     var theirMessages = messages.filterBy('mine', true);

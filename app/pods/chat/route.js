@@ -11,6 +11,7 @@ export default Ember.Route.extend({
   },
   setupController: function(controller, hash){
     controller.set('sessionUser', hash.sessionUser);
+    
     var users = hash.users;
     controller.set('users', users);
   }
