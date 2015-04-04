@@ -59,6 +59,7 @@ export default Ember.Controller.extend({
     },
     logout: function() {
       this.get("session").close();
+      this.transitionToRoute('index');
     }    
 	}
 });

@@ -1,5 +1,5 @@
 {
-  "firebase": "pairsapp",
+  "firebase": "moai",
   "public": "dist",
   "ignore": [
     "firebase.json",

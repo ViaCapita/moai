@@ -34,7 +34,11 @@ export default Ember.Controller.extend({
       this.set('passwordError', null);
     },
     githubAuthenticate: function() {
-      this.get("session").open("firebase", { authWith: 'github'});
+      this.get("session").open("firebase", { authWith: 'github'}).then(() => {
+        if(this.get('session.currentUser')) {
+          this.transitionTo('chat');
+        }
+      });
     },
     facebookAuthenticate: function() {
       this.get("session").open("firebase", { authWith: 'facebook'});

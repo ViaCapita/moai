@@ -8,7 +8,7 @@ Router.map(function() {
   this.resource('chat', function() {
     this.route('room', { path: ':room_id' });
   });  
-  this.resource('profile', { path: ':user_id' }, function() {
+  this.resource('profile', { path: '/profile/:user_id' }, function() {
     this.route('edit');
   });         
 });
