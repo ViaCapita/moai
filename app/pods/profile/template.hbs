@@ -8,31 +8,20 @@
         </div>
         {{/paper-sidenav-toggle}}
         {{#link-to "chat" classNames="md-button md-default-theme" tagName="button"}}
-          Chat Home
+          Back to Home
         {{/link-to}}
+        {{#if userIsMe}}
+          {{#link-to "profile.edit" tagName="button"}}
+            Edit Profile
+          {{/link-to}}
+        {{/if}}
+        {{#paper-button raised=true class="md-button md-default-theme" action="logout"}}
+      Log Out
+    {{/paper-button}}  
       </div>
     {{/paper-toolbar}}
     {{#paper-content flex-layout="column" flex=true class="form-content"}}
-      {{paper-text label="First Name" value=model.first}}
-      {{paper-text label="Last Name" value=model.last}}
-      {{paper-text label="Email" value=model.email type='email'}}
-      {{paper-text label="Authentication Method" value=model.provider disabled=true}}
-      {{#if errors.length}}
-        <div class="errors">
-          <h2>Errors</h2>
-          <ul>
-            {{#each error in errors}}
-             <li>{{error}}</li>
-            {{/each}}
-          </ul>
-          <button class="btn" {{action 'clearErrors'}}>Clear Errors</button>
-        </div>
-      {{/if}}
-      {{#paper-button raised=true action="updateUser" classNames="md-primary"}}Update User{{/paper-button}}
-      <p class='avatar'>
-        {{#if model.profileImage.thumbUrl}}<img src={{model.profileImage.thumbUrl}}  class="face">{{/if}}
-        {{file-picker user=model serviceType="image" store=store save="save" error="error" class="filepicker"}}
-      </p>
+       Profile goes here...
     {{/paper-content}}
   {{/paper-content}}
 {{/paper-nav-container}}

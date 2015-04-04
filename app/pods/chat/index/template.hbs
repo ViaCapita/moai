@@ -5,10 +5,10 @@
         <img src="pairs-icon.png" />
       </div>         
     {{/paper-sidenav-toggle}}
-    {{#link-to "profile" classNames="md-button md-default-theme" tagName="button"}}
+    {{#link-to "profile" sessionUser.id classNames="md-button md-default-theme"}}
       Profile
     {{/link-to}}
-    {{#paper-button raised=true action="logout"}}
+    {{#paper-button  class="md-button md-default-theme" raised=true action="logout"}}
       Log Out
     {{/paper-button}}  
 </div>

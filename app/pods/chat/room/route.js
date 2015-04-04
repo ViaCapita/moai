@@ -13,7 +13,6 @@ export default Ember.Route.extend({
   },
   setupController: function(controller, model){
     this.store.find('message');
-
     users: this.store.filter('message-room', { // live array
         orderBy: 'first'
     }, function () { return true; });

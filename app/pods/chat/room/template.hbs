@@ -6,13 +6,19 @@
         <img src="pairs-icon.png" />
       </div>
     {{/paper-sidenav-toggle}}
-    {{#if model.isPrivate}}
-      {{#each model.people as |person|}}
-        {{#if person.profileImage}}
-          <img src={{person.profileImage.thumbUrl}} class="face">
-        {{/if}} 
-        &nbsp;&nbsp;{{person.fullName}}&nbsp;&nbsp;
-      {{/each}}
+    {{#if model.isPrivate}}    
+      {{#if sessionUser.profileImage}}
+        <img src={{sessionUser.profileImage.thumbUrl}} class="face">
+      {{/if}} 
+      {{#link-to "profile" sessionUser.id classNames="md-button md-default-theme"}}
+        &nbsp;&nbsp;{{sessionUser.fullName}}&nbsp;&nbsp;        
+      {{/link-to}}
+      {{#if otherPerson.profileImage}}
+        <img src={{otherPerson.profileImage.thumbUrl}} class="face">
+      {{/if}} 
+      {{#link-to "profile" otherPerson.id classNames="md-button md-default-theme"}}
+        &nbsp;&nbsp;{{otherPerson.fullName}}&nbsp;&nbsp;        
+      {{/link-to}}      
     {{else}}
       {{model.name}}
     {{/if}}

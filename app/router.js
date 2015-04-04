@@ -7,8 +7,10 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.resource('chat', function() {
     this.route('room', { path: ':room_id' });
-  });       
-  this.route('profile');
+  });  
+  this.resource('profile', { path: ':user_id' }, function() {
+    this.route('edit');
+  });         
 });
 
 export default Router;
