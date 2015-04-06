@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'pairs',
     podModulePrefix: 'pairs/pods',
-    firebase: 'https://pairsapp.firebaseio.com/',
+    firebase: 'https://moai.firebaseio.com/',
     filepickerAPIKey: 'Aak0jm0AZRJufIXzDqgjoz',    
     environment: environment,
     baseURL: '/',

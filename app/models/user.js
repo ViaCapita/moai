@@ -15,7 +15,8 @@ export default DS.Model.extend({
   showTweets:           DS.attr('boolean'),
   facebookId:           DS.attr('string'),
   showfacebookLink:     DS.attr('boolean'),
-  googleId:             DS.attr('string'),  
+  googleId:             DS.attr('string'), 
+  avatarImage:          DS.attr('string'),  
   showGoogleLink:       DS.attr('boolean'),
   profileImage: DS.belongsTo('image',{async: true}),
   messageRooms: DS.hasMany('message-room', { async: true }),
@@ -24,5 +25,8 @@ export default DS.Model.extend({
   }.property('first', 'last'),
   initial: function(){
     return this.get('first').charAt(0) + this.get('last').charAt(0) ;
+  }.property(),
+  avatar: function(){
+    return this.get('profileImage') ? this.get('profileImage') : this.get('avatarImage');
   }.property()
 });

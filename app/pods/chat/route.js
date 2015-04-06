@@ -2,9 +2,10 @@ import Ember from "ember";
 
 export default Ember.Route.extend({
   beforeModel: function(){
+    debugger
     var sessionUser = this.get("session.currentUser");
     if(sessionUser && sessionUser.get('isNewAccount')) {
-      this.transitionTo('profile');
+      this.transitionTo('profile.edit', sessionUser.id);
     }
   }, 
   model: function(){
@@ -17,8 +18,9 @@ export default Ember.Route.extend({
   },
   setupController: function(controller, hash){
     controller.set('sessionUser', hash.sessionUser);
-    
-    var users = hash.users;
-    controller.set('users', users);
+    controller.set('users', hash.users);
+    if(hash.sessionUser && hash.sessionUser.get('isNewAccount')) {
+      this.transitionTo('profile.edit', sessionUser.id);
+    }  
   }
 });

@@ -11,6 +11,16 @@ export default DS.Model.extend({
     inverse: 'profileImage'
   }),
 
+  profileUrl: function(){
+    var u = this.get('url');
+
+    if(u) {
+      return u + "/convert?width=300&height=300&fit=crop";
+    } else {
+      return false;
+    }
+  }.property('url'),
+
   thumbUrl: function(){
     var u = this.get('url');
 

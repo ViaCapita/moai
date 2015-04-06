@@ -9,7 +9,7 @@ Router.map(function() {
     this.route('room', { path: ':room_id' });
   });  
   this.resource('profile', { path: '/profile/:user_id' }, function() {
-    this.route('edit');
+    this.route('edit', { path: '/edit' });
   });         
 });
 

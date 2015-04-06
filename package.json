@@ -35,7 +35,7 @@
     "ember-data": "1.0.0-beta.16.1",
     "ember-export-application-global": "^1.0.2",
     "ember-moment": "1.1.1",
-    "ember-paper": "git://github.com/miguelcobain/ember-paper",
+    "ember-paper": "0.0.21",
     "emberfire": "git+https://github.com/firebase/emberfire.git#ts-ed-beta-16-compat",
     "express": "^4.8.5",
     "glob": "^4.0.5",

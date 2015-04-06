@@ -36,25 +36,38 @@ export default Ember.Controller.extend({
     githubAuthenticate: function() {
       this.get("session").open("firebase", { authWith: 'github'}).then(() => {
         if(this.get('session.currentUser')) {
-          this.transitionTo('chat');
+          this.transitionToRoute('chat');
         }
       });
     },
     facebookAuthenticate: function() {
-      this.get("session").open("firebase", { authWith: 'facebook'});
+      this.get("session").open("firebase", { authWith: 'facebook'}).then(() => {
+        if(this.get('session.currentUser')) {
+          this.transitionToRoute('chat');
+        }
+      });
     },
     twitterAuthenticate: function() {
-      this.get("session").open("firebase", { authWith: 'twitter'});
+      this.get("session").open("firebase", { authWith: 'twitter'}).then(() => {
+        if(this.get('session.currentUser')) {
+          this.transitionToRoute('chat');
+        }
+      });
     },
     googleAuthenticate: function() {
-      this.get("session").open("firebase", { authWith: 'google'});
-    },
-    normalSignin: function() {
-      this.set("moaiSignin", true);
-    },
-    socialSignin: function() {
-      this.set("moaiSignin", false);
+      this.get("session").open("firebase", { authWith: 'google'}).then(() => {
+        if(this.get('session.currentUser')) {
+          this.transitionToRoute('chat');
+        }
+      });
     }
+    // ,
+    // normalSignin: function() {
+    //   this.set("moaiSignin", true);
+    // },
+    // socialSignin: function() {
+    //   this.set("moaiSignin", false);
+    // }
     // ,
     // authenticate: function(){
     //   if(this.get('valid')){
