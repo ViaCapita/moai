@@ -1,12 +1,12 @@
-{{#paper-nav-container classNames="pairs-app"}}
-  {{#paper-content flex-layout="column" flex=true}}
+
     {{#paper-toolbar}}
       <div class="md-toolbar-tools pairs-nav-buttons">
-        {{#paper-sidenav-toggle}}
-        <div class="pairs-logo">
-          <img src="pairs-logo.png" />
+      {{#paper-sidenav-toggle}}
+        <div class="pairs-icon">
+          {{paper-icon icon="menu"}}
+          <img src="pairs-icon.png" />
         </div>
-        {{/paper-sidenav-toggle}}
+      {{/paper-sidenav-toggle}}
         {{#link-to "chat" classNames="md-button md-default-theme" tagName="button"}}
           Back to Home
         {{/link-to}}
@@ -26,11 +26,8 @@
         {{#paper-card-content}}
           <h2>{{model.fullName}}</h2>
           <p>
-            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+           {{model.about}}
           </p>
         {{/paper-card-content}}
       {{/paper-card}}
     {{/paper-content}}
-  {{/paper-content}}
-{{/paper-nav-container}}

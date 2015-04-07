@@ -16,17 +16,22 @@ export default DS.Model.extend({
   facebookId:           DS.attr('string'),
   showfacebookLink:     DS.attr('boolean'),
   googleId:             DS.attr('string'), 
-  avatarImage:          DS.attr('string'),  
+  about:                DS.attr('string'), 
+  avatarImage:          DS.belongsTo('avatar',{async: true}),  
   showGoogleLink:       DS.attr('boolean'),
   profileImage: DS.belongsTo('image',{async: true}),
   messageRooms: DS.hasMany('message-room', { async: true }),
   fullName: function(){
-    return this.get('first') + " " + this.get('last');
+    var fullName = this.get('first') + " " + this.get('last');
+    if(!this.get('first') && !this.get('last') && this.get('githubUsername')){
+      fullName = '@' + this.get('githubUsername');
+    }
+    return fullName;
   }.property('first', 'last'),
   initial: function(){
     return this.get('first').charAt(0) + this.get('last').charAt(0) ;
   }.property(),
   avatar: function(){
-    return this.get('profileImage') ? this.get('profileImage') : this.get('avatarImage');
+    return this.get('avatarImage') ? this.get('avatarImage.imageUrl') : this.get('profileImage.thumbUrl');
   }.property()
 });

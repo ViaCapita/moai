@@ -13,16 +13,25 @@ export default Ember.Controller.extend({
   }.property('model'),  
 
 	actions: {
-  	updateUser: function(){
+    selectAvatar: function(avatar){
       let that = this;
       if(that.get('allowEdit')){
         var sessionUser = that.get('model');
-        sessionUser.isNewAccount = false;
+        sessionUser.set('isNewAccount', false);
+        sessionUser.set('avatarImage', avatar);
+        sessionUser.save();        
+      }
+    },
+    updateUser: function(){
+      let that = this;
+      if(that.get('allowEdit')){
+        var sessionUser = that.get('model');
+        sessionUser.set('isNewAccount', false);
         sessionUser.save().then(function () {
           that.transitionToRoute('chat');
         });        
       }
-  	},
+    },
     save: function(file){ // we're passing the record up from the file-picker component
       this.set('uploadedImage', file);
     },

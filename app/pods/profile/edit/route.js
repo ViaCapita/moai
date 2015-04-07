@@ -7,5 +7,7 @@ export default Ember.Route.extend({
   setupController: function(controller, model){
     controller.set('errors', []);
     controller.set('model', model);
+    var avatars = this.store.find('avatar');
+    controller.set('avatars', avatars);
   }
 });

@@ -1,5 +1,4 @@
-{{#paper-nav-container classNames="pairs-app"}}
-  {{#paper-content flex-layout="column" flex=true}}
+
     {{#paper-toolbar}}
       <div class="md-toolbar-tools pairs-nav-buttons">
         {{#paper-sidenav-toggle}}
@@ -16,6 +15,7 @@
       {{paper-text label="First Name" value=model.first}}
       {{paper-text label="Last Name" value=model.last}}
       {{paper-text label="Email" value=model.email type='email'}}
+      {{paper-text label="About Me" value=model.about}}
       {{paper-text label="Authentication Method" value=model.provider disabled=true}}
       {{#if model.githubUsername}}
         {{paper-text label="Github Username" value=model.githubUsername disabled=true}}
@@ -46,9 +46,18 @@
       {{/if}}
       {{#paper-button raised=true action="updateUser" classNames="md-primary"}}Update User{{/paper-button}}
       <p class='avatar'>
-        {{#if model.profileImage.thumbUrl}}<img src={{model.profileImage.thumbUrl}}  class="face">{{/if}}
-        {{file-picker user=model serviceType="image" store=store save="save" error="error" class="filepicker"}}
+        {{#if model.avatarImage}}
+          <img src={{model.avatarImage.imageUrl}} class="face">
+        {{/if}}
+        {{#if model.profileImage.thumbUrl}}
+           <img src={{model.profileImage.thumbUrl}}  class="face">
+        {{/if}}
+        {{file-picker user=model serviceType="image" store=store save="save" error="error" class="filepicker"}}&nbsp;&nbsp;CHOOSE AN AVATAR:
+      </p>
+      <p class='avatar'>
+        {{#each avatars as |avatar|}}
+          <img src={{avatar.imageUrl}} {{action 'selectAvatar' avatar}} class="face">
+        {{/each}}
       </p>
     {{/paper-content}}
-  {{/paper-content}}
-{{/paper-nav-container}}
+
