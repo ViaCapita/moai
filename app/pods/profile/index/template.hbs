@@ -22,7 +22,11 @@
     {{/paper-toolbar}}
     {{#paper-content flex-layout="column" flex=true class="form-content"}}
       {{#paper-card}}
-        <img src={{model.profileImage.profileUrl}} alt={{model.fullName}}>
+        {{#if model.profileImage}}
+          <img src={{model.profileImage.profileUrl}} alt={{model.fullName}}>
+        {{else}}
+          <img src="/img/blank-profile.jpeg" alt={{model.fullName}}>
+        {{/if}}
         {{#paper-card-content}}
           <h2>{{model.fullName}}</h2>
           <p>
