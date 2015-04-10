@@ -1,17 +1,19 @@
-
-    {{#paper-toolbar}}
-      <div class="md-toolbar-tools pairs-nav-buttons">
-        {{#paper-sidenav-toggle}}
-        <div class="pairs-logo">
-          <img src="pairs-logo.png" />
-        </div>
-        {{/paper-sidenav-toggle}}
-        {{#link-to "chat" classNames="md-button md-default-theme" tagName="button"}}
-          Chat Home
-        {{/link-to}}
-      </div>
-    {{/paper-toolbar}}
-    {{#paper-content flex-layout="column" flex=true class="form-content"}}
+{{#paper-toolbar}}
+  <div class="md-toolbar-tools pairs-nav-buttons">
+    {{#paper-sidenav-toggle}}
+    <div class="pairs-logo">
+      <img src="pairs-logo.png" />
+    </div>
+    {{/paper-sidenav-toggle}}
+    {{#link-to "chat" classNames="md-button md-default-theme" tagName="button"}}
+      Chat Home
+    {{/link-to}}
+  </div>
+{{/paper-toolbar}}
+{{#paper-content flex-layout="column" class="md-padding"}}
+  <div class="doc-content">
+    <h3>User Profile</h3>
+    <p>
       {{paper-text label="First Name" value=model.first}}
       {{paper-text label="Last Name" value=model.last}}
       {{paper-text label="Email" value=model.email type='email'}}
@@ -32,7 +34,11 @@
       {{#if model.googleId}}
         {{#paper-switch checked=model.showGoogleLink}} Show Google+ Link on Profile {{/paper-switch}}
       {{/if}}
-
+      {{#paper-button raised=true action="updateUser" classNames="md-primary"}}Update User{{/paper-button}}
+    </p>
+    <br/>
+    <h3>Profile Image and Avatar</h3>
+    <p>
       {{#if errors.length}}
         <div class="errors">
           <h2>Errors</h2>
@@ -44,7 +50,6 @@
           <button class="btn" {{action 'clearErrors'}}>Clear Errors</button>
         </div>
       {{/if}}
-      {{#paper-button raised=true action="updateUser" classNames="md-primary"}}Update User{{/paper-button}}
       <p class='avatar'>
         {{#if model.avatarImage}}
           <img src={{model.avatarImage.imageUrl}} class="face">
@@ -59,5 +64,7 @@
           <img src={{avatar.imageUrl}} {{action 'selectAvatar' avatar}} class="face">
         {{/each}}
       </p>
-    {{/paper-content}}
+    </p>
+  </div>
+{{/paper-content}}
 
