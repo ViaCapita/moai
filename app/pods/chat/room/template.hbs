@@ -40,15 +40,29 @@
           {{/if}}
         {{/paper-tile-left}}
         {{#paper-tile-content}}
-          <h3>{{message.body}}</h3>
+          <h3>
+            {{#if message.hangout}}
+              <a href={{message.hangout}} target='_blank'>{{message.body}}</a>
+            {{else}}
+              {{message.body}}
+            {{/if}}
+          </h3>
           <p>
             {{ago message.sentAt}} from {{message.sender.fullName}}
           </p>
+          {{#if message.giphy}}
+          <p>
+          <img src={{message.giphy}}>
+          </p>
+          <p>
+          <img src="/poweredbygiphy.png" style="height: 16px;">
+          </p>          
+          {{/if}}
         {{/paper-tile-content}}
       {{/paper-item}}
       {{paper-divider}}
     {{/each}}
-  {{/paper-list}}
+  {{/paper-list}}  
 {{/paper-content}}
 <div class="input-area">
   <div class="input-holder">

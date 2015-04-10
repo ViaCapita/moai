@@ -5,6 +5,8 @@ export default DS.Model.extend({
   body:   DS.attr('string'), 
   room:   DS.belongsTo('message-room', { async: true }),
   sentAt: DS.attr('date'),
+  giphy:   DS.attr('string'), 
+  hangout:   DS.attr('string'), 
   mine: function(){
     var isMine = this.get("session.content.currentUser.id") === this.get('sender.id');
     return isMine;
