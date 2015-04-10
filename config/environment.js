@@ -27,8 +27,8 @@ module.exports = function(environment) {
       'default-src': "'none'",
       'script-src': "'self' 'unsafe-inline' 'unsafe-eval' http://api.filepicker.io/v1/filepicker.js https://*.firebaseio.com/",
       'font-src': "'self' https://fonts.gstatic.com",
-      'connect-src': "'self' wss://*.firebaseio.com/ https://auth.firebase.com/",
-      'img-src': "'self' https://*.filepicker.io",
+      'connect-src': "'self' wss://*.firebaseio.com/ https://auth.firebase.com/  http://api.giphy.com/v1/gifs/random",
+      'img-src': "'self' https://*.filepicker.io http://s3.amazonaws.com/giphygifs/media/ http://*.giphy.com/media/",
       'report-uri':"'localhost'",
       'style-src': "'self' 'unsafe-inline'",
       'frame-src': "https://*.filepicker.io https://*.filepicker.io https://*.firebaseio.com/"

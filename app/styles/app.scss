@@ -262,7 +262,9 @@ md-nav-container {
     }
   }
 }
-
+.sidenav {
+  margin-top: 64px;
+}
 .sidenav ul {
   margin: 0;
   padding: 0;
@@ -327,11 +329,14 @@ md-nav-container {
   line-height: 25px; }
 
 .paper-toolbar {
-  background-color: #20608b !important; }
+  background-color: #20608b !important; 
+  position: fixed;
+}
 
 .icon-demo md-icon {
   font-size: 24px;
-  margin: 16px; }
+  margin: 16px; 
+}
 
 .icon-demo .icon-tile {
   float: left;
@@ -344,6 +349,7 @@ md-nav-container {
 
 .list-demo {
   margin-bottom: 40px;
+  margin-top: 64px;
 
   .face {
     border-radius: 30px;
@@ -393,7 +399,7 @@ md-nav-container {
 }
 
 .input-area {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   padding: .5em;
@@ -405,6 +411,7 @@ md-nav-container {
 
   .input-holder {
     width: 90%;
+    padding-left: 254px;
     display: table-cell;
     padding-right: 10px;
   }
