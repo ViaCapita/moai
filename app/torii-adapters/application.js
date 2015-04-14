@@ -1,18 +1,22 @@
 import Ember from "ember";
 
 export default Ember.Object.extend({
+  presence: Ember.inject.service(), 
   open: function(authorization) {
     let store = this.get("container").lookup("store:main");
     let that = this;
+    let presence = this.get('presence');
     return new Ember.RSVP.Promise(function(resolve, reject) {
       store.find("user", authorization.uid).then(function(user) {
         console.log('User Found:', user);
+        presence.set('user', user);
         Ember.run.bind(null, resolve({currentUser: user}));
       }, function() {
         let data  = that.importAccountData(authorization);
         store.unloadAll("user");
         let newUser  = store.createRecord("user", data);
         newUser.save().then(function(nuser) {
+          presence.set('user', nuser);
           console.log('New User Set into Session:', nuser);
           Ember.run.bind(null, resolve({currentUser: nuser}));
         }, function() {
@@ -66,13 +70,14 @@ export default Ember.Object.extend({
   close: function() {
     let firebase = this.get("container").lookup("adapter:application").firebase;
     let store = this.get("container").lookup("store:main");
-
+    
     return new Ember.RSVP.Promise(function(resolve) {
-      store.unloadAll("user");
-      store.unloadAll("message");
-      store.unloadAll("message-room");
-      store.unloadAll("organization");
+      store.unloadAll("avatar");
       store.unloadAll("image");
+      store.unloadAll("message-room");
+      store.unloadAll("message");
+      store.unloadAll("organization");
+      store.unloadAll("user");
       firebase.unauth();
       resolve({currentUser: null});
     });

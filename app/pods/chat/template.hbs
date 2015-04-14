@@ -15,7 +15,7 @@
             {{conversation-room room=room me=sessionUser}}
           {{/each}}
           <li><a class="nav-section__title">PEOPLE</a></li>
-          {{#each allUsersButMe as |user|}}
+          {{#each onlineUsers as |user|}}
             <li><a {{action 'createRoom' true true user}}>{{user.fullName}}</a></li>
           {{/each}}
         </ul>

@@ -31,18 +31,23 @@
     {{#each model.messages as |message|}}
       {{#paper-item}}
         {{#paper-tile-left}}
-          {{#if message.sender.avatarImage}}
-            <img src={{message.sender.avatarImage.imageUrl}} class="face">
-          {{else if message.sender.profileImage.url}}
-            <img src={{message.sender.profileImage.thumbUrl}} class="face">
-          {{else}}
-            <span class="{{if message.mine 'me' 'them'}}">{{message.sender.initial}}</span>
-          {{/if}}
+          {{#if message.hangout}}          
+              <img src="/img/hangout.png" class="nonface">
+          {{else if message.sender.avatarImage}}
+              <img src={{message.sender.avatarImage.imageUrl}} class="nonface">
+            {{else if message.sender.profileImage.url}}
+              <img src={{message.sender.profileImage.thumbUrl}} class="face">
+            {{else}}
+              <span class="{{if message.mine 'me' 'them'}}">{{message.sender.initial}}</span>
+            {{/if}}
         {{/paper-tile-left}}
         {{#paper-tile-content}}
           <h3>
             {{#if message.hangout}}
-              <a href={{message.hangout}} target='_blank'>{{message.body}}</a>
+              {{message.body}}&nbsp;&nbsp;
+              <a href={{message.hangout}} target='_blank'>
+                Click here to start a Hangout
+              </a>
             {{else}}
               {{message.body}}
             {{/if}}
@@ -50,23 +55,29 @@
           <p>
             {{ago message.sentAt}} from {{message.sender.fullName}}
           </p>
-          {{#if message.giphy}}
-          <p>
-          <img src={{message.giphy}}>
-          </p>
-          <p>
-          <img src="/poweredbygiphy.png" style="height: 16px;">
-          </p>          
-          {{/if}}
         {{/paper-tile-content}}
       {{/paper-item}}
+      {{#if message.giphy}}
+        {{paper-divider}}
+        {{#paper-item}}
+          {{#paper-tile-left}}       
+            <img src="/img/GiphyBadge.gif" style="height: 50px" class="nonface">
+          {{/paper-tile-left}}
+          {{#paper-tile-content}}
+            <p>
+              <img src={{message.giphy}}>
+            </p>      
+          {{/paper-tile-content}}
+        {{/paper-item}}
+      {{/if}}
       {{paper-divider}}
     {{/each}}
   {{/paper-list}}  
 {{/paper-content}}
+    
 <div class="input-area">
   <div class="input-holder">
-    {{input type="text" placeholder="Enter your message here..." value=newMessageBody action="sendMessage" on="enter"}}
+    {{textarea rows="2" cols="100" placeholder="Enter your message here..." value=newMessageBody action="sendMessage"}}
   </div>
   {{#paper-button raised=true action="sendMessage" classNames="md-primary"}}
     Send Message
