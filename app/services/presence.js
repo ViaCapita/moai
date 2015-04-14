@@ -32,9 +32,9 @@ export default Ember.Service.extend({
       // when I disconnect, update the last time I was seen online
       this.get('lastOnlineRef').onDisconnect().set(Firebase.ServerValue.TIMESTAMP);
     }
-    var connectedRef = this.get('connectedRef');
-    var connectionsRef = this.get('connectionsRef');
-    var lastOnlineRef = this.get('lastOnlineRef');
-    debugger
+    // var connectedRef = this.get('connectedRef');
+    // var connectionsRef = this.get('connectionsRef');
+    // var lastOnlineRef = this.get('lastOnlineRef');
+    // debugger
   }.observes('user'),
 });

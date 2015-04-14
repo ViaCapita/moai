@@ -40,6 +40,7 @@
     "express": "^4.8.5",
     "glob": "^4.0.5",
     "liquid-fire": "git://github.com/ef4/liquid-fire",
+    "materialize-css": "^0.96.1",
     "torii": "0.2.3",
     "torii-fire": "0.2.0"
   }
