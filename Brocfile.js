@@ -20,4 +20,5 @@ var app = new EmberApp();
 // app.import('vendor/emberfire.js');
 // app.import('vendor/flat-ui-pro.js');
 app.import('bower_components/filepicker/filepicker.min.js');
+app.import('vendor/platform.js');
 module.exports = app.toTree();

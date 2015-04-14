@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-            
+  presence: Ember.inject.service(),     
   actions: {
     githubAuthenticate: function() {
       this.get("session").open("firebase", { authWith: 'github'}).then(() => {

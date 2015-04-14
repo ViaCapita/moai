@@ -42,10 +42,9 @@ export default Ember.Controller.extend({
       restOfWords = restOfWords.join(' ');   
     }
     
-    if (allWords[0] === "/hangout") {
+    if (allWords[0] === "@hangout") {
       this.saveHangoutMessage(message, room);
-    } else if (allWords[0] === "/gif") {
-
+    } else if (allWords[0] === "@gif") {
       this.saveGiphyMessage(restOfWords, message, room);
     } else {
       message.set('room', room);
@@ -81,25 +80,14 @@ export default Ember.Controller.extend({
   },
 
   saveHangoutMessage: function(message, room){
-    var that = this;
-//https://hangoutsapi.talkgadget.google.com/hangouts/_?gid=691521906844&gd=T03TC01B5%7CU040ETG9L%7CD040P2M4T%7Cmax_minkoff%7Cxoxo-4014934326-7axuiBV2G6dteXCrUCHsJyZw%7C4391306808
-//https://hangoutsapi.talkgadget.google.com/hangouts/_/g2y3pzqcsulxtgqcaiviefcvgma
-    var url = 'https://plus.google.com/hangouts/_/UNIQUE_HANGOUT_ID?key=AIzaSyCTg8O96zyZlcze5G0gIYGxCpcHOEViCTY&gid==988654388708';
-    Ember.$.getJSON(url)
-      .then(function(hangoutUrl) {
-        if(hangoutUrl) {
-          message.set('hangout', hangoutUrl);       
-        } else {
-          message.set('error', 'Cannot create hangout at this time.');   
-        }
-        message.set('room', room);
-        message.set('sender', that.get("session.currentUser"));
-        message.set('sentAt', new Date());
-        message.save().then(() => {
-          scrollDown();
-          return room.save();
-        });         
-      });
+    var url = 'https://hangoutsapi.talkgadget.google.com/hangouts/_?gid=988654388708';
+    message.set('hangout', url);       
+    message.set('room', room);
+    message.set('sentAt', new Date());
+    message.save().then(() => {
+      scrollDown();
+      return room.save();
+    });      
   },
 
 	actions: {

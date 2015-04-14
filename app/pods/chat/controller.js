@@ -13,19 +13,21 @@ export default Ember.Controller.extend({
   }.property('users.[]'),
 
   onlineUsers: function() {
-    var usersToDisplay = this.get('allUsers');
-    // var usersRooms = Ember.A(this.get('rooms'));
-    
-    // if(usersRooms.get('length')){
-    //   var allRooms = this.get('rooms').filterBy('isPrivate', true);
-    //   for (var i = allRooms.get('length') - 1; i >= 0; i--) {
-    //     var room = allRooms.objectAt(i);
-    //     var people = room.get('people');
-    //     usersToDisplay.removeObjects(people);
-    //   }           
-    // }
+    var usersToDisplay = this.get('allUsersButMe');
+    var usersRooms = Ember.A(this.get('rooms'));
+    if(usersRooms.get('length')){
+      for (var i = usersRooms.get('length') - 1; i >= 0; i--) {
+        var room = usersRooms.objectAt(i);
+        var people = room.get('people');
+        console.log('number:', people.get('length'));
+        for (var p = people.get('length') - 1; p >= 0; p--) {
+          usersToDisplay = usersToDisplay.removeObject(people.objectAt(p));
+        }
+      }         
+    }
+      
     return usersToDisplay;
-  }.property('users.[]', 'rooms.[]'),
+  }.property('users.[]', 'rooms.[]').volatile(),
 
 	actions: {
     createRoom: function(isPrivate, oneOnOne, user){
